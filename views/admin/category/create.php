@@ -1,140 +1,94 @@
 <?php
 include "../views/admin/layout/header.php";
 ?>
-        <!-- Page Body start -->
-        <div class="page-body-wrapper">
+<!-- Page Body start -->
+<div class="page-body-wrapper">
 
-            <div class="page-body">
+    <div class="page-body">
 
-                <!-- New Product Add Start -->
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-sm-8 m-auto">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="card-header-2">
-                                                <h5>Category Information</h5>
-                                            </div>
-
-                                            <div class="theme-form theme-form-2 mega-form">
-                                                <div class="mb-4 row align-items-center">
-                                                    <label class="form-label-title col-sm-3 mb-0">Category Name</label>
-                                                    <div class="col-sm-9">
-                                                        <input class="form-control" type="text"
-                                                            placeholder="Category Name">
-                                                    </div>
-                                                </div>
-
-                                                <div class="mb-4 row align-items-center">
-                                                    <label class="col-sm-3 col-form-label form-label-title">Category
-                                                        Image</label>
-                                                    <div class="form-group col-sm-9">
-                                                        <form class="dropzone custom-dropzone" id="multiFileUpload"
-                                                            action="https://themes.pixelstrap.com/upload.php">
-                                                            <div class="dropzone-wrapper">
-                                                                <div class="dz-message needsclick">
-                                                                    <div>
-                                                                        <i class="icon-cloud-up"></i>
-                                                                        <h6>Drop files here or click to upload.</h6>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-
-                                                <div class="mb-4 row align-items-center">
-                                                    <div class="col-sm-3 form-label-title">Select Category Icon</div>
-                                                    <div class="col-sm-9">
-                                                        <div class="dropdown icon-dropdown">
-                                                            <button class="btn dropdown-toggle" type="button"
-                                                                id="dropdownMenuButton1" data-bs-toggle="dropdown">
-                                                                Select Icon
-                                                            </button>
-                                                            <ul class="dropdown-menu"
-                                                                aria-labelledby="dropdownMenuButton1">
-                                                                <li>
-                                                                    <a class="dropdown-item" href="#">
-                                                                        <img src="https://themes.pixelstrap.com/fastkart/../public/admin/assets//svg/1/vegetable.svg"
-                                                                            class="img-fluid" alt="">
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="dropdown-item" href="#">
-                                                                        <img src="https://themes.pixelstrap.com/fastkart/../public/admin/assets//svg/1/cup.svg"
-                                                                            class="blur-up lazyload" alt="">
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="dropdown-item" href="#">
-                                                                        <img src="https://themes.pixelstrap.com/fastkart/../public/admin/assets//svg/1/meats.svg"
-                                                                            class="img-fluid" alt="">
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="dropdown-item" href="#">
-                                                                        <img src="https://themes.pixelstrap.com/fastkart/../public/admin/assets//svg/1/breakfast.svg"
-                                                                            class="img-fluid" alt="">
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="dropdown-item" href="#">
-                                                                        <img src="https://themes.pixelstrap.com/fastkart/../public/admin/assets//svg/1/frozen.svg"
-                                                                            class="img-fluid" alt="">
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="dropdown-item" href="#">
-                                                                        <img src="https://themes.pixelstrap.com/fastkart/../public/admin/assets//svg/1/biscuit.svg"
-                                                                            class="img-fluid" alt="">
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="dropdown-item" href="#">
-                                                                        <img src="https://themes.pixelstrap.com/fastkart/../public/admin/assets//svg/1/grocery.svg"
-                                                                            class="img-fluid" alt="">
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="dropdown-item" href="#">
-                                                                        <img src="https://themes.pixelstrap.com/fastkart/../public/admin/assets//svg/1/drink.svg"
-                                                                            class="img-fluid" alt="">
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="dropdown-item" href="#">
-                                                                        <img src="https://themes.pixelstrap.com/fastkart/../public/admin/assets//svg/1/milk.svg"
-                                                                            class="img-fluid" alt="">
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="dropdown-item" href="#">
-                                                                        <img src="https://themes.pixelstrap.com/fastkart/../public/admin/assets//svg/1/pet.svg"
-                                                                            class="img-fluid" alt="">
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+        <!-- New Product Add Start -->
+        <form action="index.php?act=category-create" method="post" enctype="multipart/form-data">
+            <div class=" container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-sm-8 m-auto">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="card-header-2">
+                                            <h5>Thêm danh mục</h5>
                                         </div>
+
+                                        <div class="thme-form theme-form-2 mega-form">
+                                            <div class="mb-4 row align-items-center">
+                                                <label class="form-label-title col-sm-3 mb-0">Tên danh mục</label>
+                                                <div class="col-sm-9">
+                                                    <input class="form-control" name="name"
+                                                        placeholder="Nhập tên danh mục">
+                                                    <?php if (isset($_SESSION['errors']['name'])) : ?>
+                                                    <p class="text-danger"><?= $_SESSION['errors']['name'] ?></p>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-4 row align-items-center">
+                                                <label class="form-label-title col-sm-3 mb-0">Chọn ảnh</label>
+                                                <div class="col-sm-9">
+                                                    <input type="file" name="image" class="form-control">
+                                                    <?php if (isset($_SESSION['errors']['image'])) : ?>
+                                                    <p class="text-danger"><?= $_SESSION['errors']['image'] ?></p>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-4 row align-items-center">
+                                                <label class="form-label-title col-sm-3 mb-0">Trạng thái</label>
+                                                <div class="col-sm-9">
+                                                    <select class="form-select" name="status"
+                                                        aria-label="Default select example">
+                                                        <option selected>Chọn trạng thái</option>
+                                                        <option value="Active">Ẩn</option>
+                                                        <option value="Hidden">Hiện</option>
+                                                    </select>
+                                                    <?php if (isset($_SESSION['errors']['status'])) : ?>
+                                                    <p class="text-danger"><?= $_SESSION['errors']['status'] ?></p>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-4 row align-items-center">
+                                                <label class="form-label-title col-sm-3 mb-0">Mô tả</label>
+                                                <div class="col-sm-9">
+                                                    <textarea class="form-control bg-light-subtle" name="description"
+                                                        id="description" placeholder="Nhập mô tả"></textarea>
+                                                    <?php if (isset($_SESSION['errors']['description'])) : ?>
+                                                    <p class="text-danger"><?= $_SESSION['errors']['description'] ?></p>
+                                                    <?php endif; ?>
+                                                </div>
+
+                                            </div>
+                                            <div style="display: flex; margin-left: 440px;">
+                                                <button type="submit" class="btn btn-outline-primary"
+                                                    name="createCategory">Thêm mới</button>
+                                                <button type="submit" class="btn btn-outline-warning"><a
+                                                        href="index.php?act=category">Quay lại</a></button>
+                                            </div>
+
+
+                                        </div>
+
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
+                    <!-- New Product Add End -->
                 </div>
-                <!-- New Product Add End -->
+                <!-- Container-fluid End -->
             </div>
-            <!-- Container-fluid End -->
-        </div>
+        </form>
         <!-- Page Body End -->
-<?php
-include "../views/admin/layout/footer.php";
-?>
-
-
-
+        <?php
+        include "../views/admin/layout/footer.php";
+        ?>
