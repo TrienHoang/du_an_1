@@ -7,7 +7,7 @@ include "../views/admin/layout/header.php";
     <div class="page-body">
 
         <!-- New Product Add Start -->
-        <form action="index.php?act=category-edit&id=<?= $getCategory['category_id'] ?>" method="post"
+        <form action="index.php?act=category-edit&id=<?= $getCategory['category_id']?>" method="post"
             enctype="multipart/form-data">
             <div class="container-fluid">
                 <div class="row">

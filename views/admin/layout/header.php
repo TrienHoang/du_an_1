@@ -195,21 +195,12 @@
                                     </a>
                                     <ul class="sidebar-submenu">
                                         <li>
-                                            <a href="all-users.html">All users</a>
-                                        </li>
-                                        <li>
-                                            <a href="add-new-user.html">Add new user</a>
+                                            <a href="index.php?act=user">All users</a>
                                         </li>
                                     </ul>
                                 </li>
 
 
-                                <!-- <li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title link-nav" href="media.html">
-                                        <i class="ri-price-tag-3-line"></i>
-                                        <span>Media</span>
-                                    </a>
-                                </li> -->
 
                                 <li class="sidebar-list">
                                     <a class="sidebar-link sidebar-title" href="javascript:void(0)">
