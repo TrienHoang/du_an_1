@@ -10,7 +10,7 @@ include "../views/admin/layout/header.php";
                     <div class="card card-table">
                         <div class="card-body">
                             <div class="title-header option-title">
-                                <h5>All Category</h5>
+                                <h5>Danh sách danh mục</h5>
                                 <form class="d-inline-flex">
                                     <a href="index.php?act=category-create"
                                         class="align-items-center btn btn-theme d-flex">

@@ -1,6 +1,98 @@
 <?php
 include "../views/client/layout/header.php";
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        li{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        .slider{
+            padding: 20px ;
+            height: 350px;
+            text-align: center;
+            margin-top: -20px;
+        }
+        .slider-content{
+            justify-content: space-between;
+        }
+        .slider-content-top{
+            width: 100%;
+            height: 300px;
+            position: relative;
+        }
+        .slider-content-bottom{
+            width: 690px;
+            display: flex;
+            justify-content:space-between ;
+            border: 2px solid #ddd;
+            border-top: none;
+            height: 50px;
+            margin-left: 72px;
+        }
+        .slider-content-bottom li{
+            width: 20%;
+            text-align: center;
+            cursor: pointer;
+            padding: 10px 0px;
+            height: 100%;
+            line-height: 20px;
+            position: relative;
+            
+        }
+        .slider-content-bottom li::before{
+            display: block;
+            content: "";
+            position: absolute;
+            height: 70%;
+            width: 1px;
+            background-color: #ddd;
+            right: 0;
+        }
+        .slider-content-bottom li.active { 
+            border-top: 4px solid rgb(224, 38, 38) ;
+        }
+        .slider-content-top-btn{
+            position: absolute;
+            top: 50%;
+            display: flex;
+            justify-content: space-between;
+            width: 81%;
+            margin-left: 80px;
+        }
+        .slider-content-top-btn i {
+            color: #333;
+            font-size: 25px;
+            transform: translateY(-50%);
+            border-radius: 5px;
+            opacity: 0;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .slider-content-top:hover i{
+            opacity: 1;
+        }
+        .xc-sec-heading{
+            padding-top: 40px;
+        }
+
+    </style>
+</head>
+<body>
         <div class="xc-body-overlay xc-close-toggler"></div>
         <div class="xc-search-popup">
             <div class="xc-search-popup__wrap">
@@ -19,7 +111,7 @@ include "../views/client/layout/header.php";
             <div class="xc-mobile-nav__content">
                 <a href="#" class="xc-mobile-nav__close xc-search-popup__close xc-close-toggler"></a>
                 <div class="logo-box">
-                    <a href="index.html"><img src="../public/client/assets//img/logo/white-logo.png" width="150" alt="" /></a>
+                    <a href="index.php?act=index"><img src="../public/client/assets//img/logo/white-logo.png" width="150" alt="" /></a>
                 </div>
                 <!-- /.logo-box -->
                 <div class="xc-mobile-nav__menu"></div>
@@ -72,35 +164,35 @@ include "../views/client/layout/header.php";
                             </ul>
                         </div>
                     </div>
-                    <div class="col-12 col-xl-9 col-xxl-9">
+                    <div class="col-12 col-xl-9 col-xxl-9" style="padding-left: 80px;">
                         <div id="carouselExample" class="carousel slide">
                             <div class="carousel-inner">
-                              <div class="carousel-item active">
-                                <img src="./../public/client/assets//img/banner/baner-05.jpg" class="d-block w-100" alt="...">
-                              </div>
-                              <div class="carousel-item">
-                                <img src="./../public/client/assets//img/banner/banner-01.jpg" class="d-block w-100" alt="...">
-                              </div>
-                              <div class="carousel-item">
-                                <img src="./../public/client/assets//img/banner/banner-02.jpg" class="d-block w-100" alt="...">
-                              </div>
-                              <div class="carousel-item">
-                                <img src="./../public/client/assets//img/banner/banner-03.jpg" class="d-block w-100" alt="...">
-                              </div>
-                              <div class="carousel-item">
-                                <img src="./../public/client/assets//img/banner/banner-04.jpg" class="d-block w-100" alt="...">
-                              </div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Next</span>
-                            </button>
+                            <section class="slider">
+                                <div class="container" >
+                                    <div class="slider-content">
+                                        <div class="slider-content">
+                                            <div class="slider-content-top">
+                                                <a href="#"><img src="./../public/client/assets//img/banner/0.webp" alt="" id="anh"></a>
+                                                <div class="slider-content-top-btn">
+                                                    <i class="fa-solid fa-arrow-left" onclick="pre()"></i>
+                                                    <i class="fa-solid fa-arrow-right" onclick="next()"></i>
+                                                </div>
+                                            </div>
+                                            <div class="slider-content-bottom">
+                                                <li class="active">SAMSUNG A06 </li>
+                                                <li>IPHONE 16 SERIES </li>
+                                                <li>GALAXY S24 ULTRA </li>
+                                                <li>HUAWEI WATCH D2 </li>
+                                                <li>MACBOOK PRO 2024 </li>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
                           </div>
 
+                          
                     </div>
                 </div>
             </div>
@@ -568,8 +660,58 @@ include "../views/client/layout/header.php";
                 </div>
             </div>
         </div>
+        </body>
+
+        <script>
+    var img = [];
+var index = 0;
+
+// Load ảnh
+function loadanh() {
+    for (var i = 0; i < 6; i++) {
+        img[i] = new Image();
+        img[i].src = "./../public/client/assets//img/banner/" + i + ".webp";
+    }
+}
+loadanh();
+
+// Nút next
+function next() {
+    index++;
+    if (index >= img.length) {
+        index = 0;
+    }
+
+    var anh = document.getElementById("anh");
+    anh.src = img[index].src;  
+    updateActiveItem(); 
+}
+
+// Nút pre
+function pre() {
+    index--;
+    if (index < 0) {
+        index = img.length - 1;  
+    }
+    var anh = document.getElementById("anh");
+    anh.src = img[index].src;
+    updateActiveItem();  
+}
 
 
+function updateActiveItem() {
+    var items = document.querySelectorAll('.slider-content-bottom li');
+    items.forEach(function(item, i) {
+        item.classList.remove('active'); 
+        if (i === index) {
+            item.classList.add('active'); 
+        }
+    });
+}
+
+</script>
+</html>
 <?php
 include "../views/client/layout/footer.php";
 ?>
+
