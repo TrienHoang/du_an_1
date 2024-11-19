@@ -20,7 +20,6 @@ include "../views/client/layout/header.php";
           display: flex;
           justify-content: center;
           align-items: center;
-          margin: 40px 0px;
       }
   
       .form-heading {
@@ -28,22 +27,20 @@ include "../views/client/layout/header.php";
           color: black;
           font-weight: bold;
           text-align: center;
-          margin-bottom: 30px;
+          margin-bottom: 70px;
       }
       .form-group {
           border-bottom: 1px solid black;
-          margin-top: 15px;
-          margin-bottom: 20px;
           display: flex;
           align-items: center;
-          margin-bottom: 35px;
+          width: 600px;
       }
       .form-input {
           background: transparent;
           border: 0;
           outline: 0;
           flex-grow: 1;
-          width: 600px;
+          
       }
       .form-input::placeholder {
           color: gray; 
@@ -70,51 +67,15 @@ include "../views/client/layout/header.php";
 </head>
 <body>
     <div id="wrapper">
-      <form id="form-register" action="index.php?act=register" method="post">
-          <h1 class="form-heading">Đăng ký</h1>
-          <!-- Tên tài khoản -->
-          <div class="form-group">
-            <i class="fa-solid fa-user"></i>
-            <input type="text" class="form-input" placeholder="Tên tài khoản" required name="name">
-          </div>
-          <!-- Họ tên -->
-          <div class="form-group">
-            <i class="fa-solid fa-id-card"></i>
-            <input type="text" class="form-input" placeholder="Họ tên" required name="name">
-          </div>
-          <!-- Số điện thoại -->
-          <div class="form-group">
-            <i class="fa-solid fa-phone"></i>
-            <input type="tel" class="form-input" placeholder="Số điện thoại" pattern="[0-9]{10}" required name="phone">
-          </div>
-          <!-- Email -->
+      <form id="form-forgotPassword" action="index.php?act=forgotPassword" method="post">
+          <h1 class="form-heading">Quên mật khẩu</h1>
+
           <div class="form-group">
             <i class="fa-solid fa-envelope"></i>
-            <input type="email" class="form-input" placeholder="Email" required name="email">
+            <input type="email" class="form-input" placeholder="Nhập email" required name="email">
           </div>
-          <!-- Ngày sinh -->
-          <div class="form-group">
-            <i class="fa-solid fa-calendar"></i>
-            <input type="date" class="form-input" required >
-          </div>
-          <!-- Mật khẩu -->
-          <div class="form-group">
-            <i class="fa-solid fa-key"></i>
-            <input id="password1" type="password" class="form-input" placeholder="Mật khẩu" required name="password">
-            <span class="eye" id="eye1">
-              <i class="fa-solid fa-eye"></i>
-            </span>
-          </div>
-          <!-- Nhập lại mật khẩu -->
-          <div class="form-group">
-            <i class="fa-solid fa-key"></i>
-            <input id="password2" type="password" class="form-input" placeholder="Nhập lại mật khẩu" required name="repass">
-            <span class="eye" id="eye2">
-              <i class="fa-solid fa-eye"></i>
-            </span>
-          </div>
-          <!-- Submit -->
-          <input type="submit" value="Đăng ký" class="form-submit" name="register">
+
+          <input type="submit" value="Gửi" class="form-submit" name="gui">
       </form>
       <?php
         if(isset($thongbao)&&($thongbao!="")){

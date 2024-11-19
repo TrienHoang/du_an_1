@@ -43,6 +43,18 @@
             $stmt = $this->connect()->prepare($sql);
             return $stmt->execute([$name, $image, $status, $description, $id]);
         }
+
+        
+
+        
+
+      
+        
+
+    
+        
+
+        
         
 
         

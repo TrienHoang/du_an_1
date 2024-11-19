@@ -1,7 +1,8 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
-
+<?php
+$role = isset($_SESSION['role']) ? $_SESSION['role'] : null; ?>
 <!-- Mirrored from swiftcart-html.vercel.app/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Nov 2024 15:44:23 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
@@ -51,6 +52,7 @@
     </div>
 
     <!-- /.preloader -->
+   
     <div class="xc-page-wrapper">
 
         <header>
@@ -58,23 +60,30 @@
                 <div class="container">
                     <div class="xc-header-one__wrapper">
                         <div class="xc-header-one__logo">
-                            <a href="index.html"><img src="../public/client/assets/img/logo/white-logo.png" alt="logo" width="158"></a>
+                            <a href="index.php?act=index"><img src="../public/client/assets/img/logo/white-logo.png" alt="logo" width="158"></a>
                         </div>
                         <div class="xc-header-one__right">
                             <div class="xc-header-one__search d-none d-xl-block">
                                 <form action="#">
-                                    <input type="search" placeholder="Search">
-                                    <button type="submit">Search</button>
+                                    <input type="search" placeholder="Tìm kiếm tại đây...">
+                                    <button type="submit">Tìm kiếm</button>
                                 </form>
                             </div>
                             <div class="xc-header-one__btns d-none d-lg-flex">
 
                                 <a href="cart.html" class="xc-header-one__btn">
-                                    <i class="icon-grocery-store"></i>My cart
+                                    <i class="icon-grocery-store"></i>Giỏ hàng
                                 </a>
-                                <a href="#" class="xc-header-one__btn">
-                                    <i class="icon-user"></i>Profile
+                                <a href="index.php?act=login" class="xc-header-one__btn">
+                                    <i class="icon-user"></i>Đăng nhập
                                 </a>
+                                <?php if($role==0){ ?>
+                                <a href="admin/index.php" class="xc-header-one__btn">
+                                    <i class="icon-user"></i>Admin
+                                </a>
+                                <?php } ?>
+
+                                
                                 <!-- mobile drawer  -->
                                 <div class="xc-header-one__hamburger d-xl-none">
                                     <button type="button" class="xc-offcanvas-btn xc-header-one__btn">
@@ -146,4 +155,5 @@
                     </div>
                 </div>
             </div>
+           
         </header>
