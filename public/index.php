@@ -1,9 +1,11 @@
 <?php
 session_start();
 require_once '../controllers/admin/CategoryAdminController.php';
+require_once '../controllers/admin/UserAdminController.php';
 
 $action = isset($_GET['act']) ? $_GET['act'] : 'index';
 $categoryAdmin = new CategoryAdminController();
+$userAdmin = new UserAdminController();
 
 switch ($action) {
     case 'admin':
@@ -35,6 +37,20 @@ switch ($action) {
         break;
     case 'category-delete':
         $categoryAdmin->deleteCategory();
+        break;
+    case 'user':
+        $userAdmin->listUsers();
+        break;
+    case 'user-create':
+        $userAdmin->createUser();
+        break;
+    case 'user-edit':
+        $id = $_GET['id'];
+        $userAdmin->updateUser($id);
+        break;
+    case 'user-detail':
+        $id = $_GET['id'];
+        $userAdmin->detailUser($id);
         break;
 
 
