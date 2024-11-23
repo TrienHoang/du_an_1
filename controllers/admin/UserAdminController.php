@@ -72,17 +72,23 @@ class UserAdminController extends User
                 if (move_uploaded_file($file['tmp_name'], './images/user/' . $images)) {
                     $createUser = $this->create(trim($_POST["name"]), trim($images), trim($_POST["address"]), trim($_POST["email"]), trim($_POST["phone"]), trim($_POST["password"]), trim($_POST["role"]), trim($_POST["active"]));
                     if ($createUser) {
-                        echo '<div class="alert alert-success">Đăng ký thành công!</div>';
-                        // Chuyển hướng sau 3 giây 
-                        echo '<script>
-                            setTimeout(function() {
-                                window.location.href = "index.php?act=user";
-                            }, 3000);
-                        </script>';
+                        // echo '<div class="alert alert-success">Đăng ký thành công!</div>';
+                        // // Chuyển hướng sau 3 giây 
+                        // echo '<script>
+                        //     setTimeout(function() {
+                        //         window.location.href = "index.php?act=user";
+                        //     }, 3000);
+                        // </script>';
+                        // exit();
+                        $_SESSION["success"] = "Thêm người dùng thành công";
+                        header('Location:?act=user');
                         exit();
                     } else {
+                        $_SESSION["error"] = "Sửa người dùng thất bại";
                         header('Location: ' . $_SERVER['HTTP_REFERER']);
                         exit();
+                        // header('Location: ' . $_SERVER['HTTP_REFERER']);
+                        // exit();
                     }
                 }
             }
@@ -93,50 +99,50 @@ class UserAdminController extends User
     public function updateUser($id)
     {
         $infoUser = $this->detail($id);
-    
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['updateUser'])) {
             $errors = [];
-    
+
             if (empty($_POST['name'])) {
                 $errors["name"] = "Vui lòng nhập tên";
             } else if (strlen(trim($_POST["name"])) < 3) { // Kiểm tra độ dài tên
                 $errors["name"] = "Tên phải có ít nhất 3 ký tự";
             }
-    
+
             if (empty($_POST['phone'])) {
                 $errors["phone"] = "Vui lòng nhập số đt";
             } else if (strlen(trim($_POST["phone"])) < 10) { // Kiểm tra độ dài số đt
                 $errors["phone"] = "Số điện thoại chưa hợp lệ";
             }
-    
+
             if (!filter_var(trim($_POST["email"]), FILTER_VALIDATE_EMAIL)) {
                 $errors["email"] = "Email chưa hợp lệ"; // Kiểm tra email hợp lệ
             }
-    
+
             if (empty(trim($_POST['address']))) {
                 $errors["address"] = "Vui lòng nhập địa chỉ";
             }
-    
+
             if (!isset($_POST['role'])) {
                 $errors["role"] = "Vui lòng chọn chức năng";
             }
-    
+
             if (!isset($_POST['active'])) {
                 $errors["active"] = "Vui lòng chọn trạng thái";
             }
-    
+
             if (empty($_POST['password'])) {
                 $errors["password"] = "Vui lòng nhập mật khẩu";
             } else if (strlen(trim($_POST['password'])) < 6) {
                 $errors["password"] = "Mật khẩu phải nhiều hơn 6 kí tự";
             }
-    
+
             if (empty($_POST['confirmPassword'])) {
                 $errors["confirmPassword"] = "Chưa nhập lại mật khẩu!";
             } else if ($_POST['password'] !== $_POST['confirmPassword']) {
                 $errors["confirmPassword"] = "Nhập lại mật khẩu không khớp";
             }
-    
+
             $file = $_FILES['avatar'];
             $images = $file['name'];
             if (!empty($_FILES['avatar']['name'])) {
@@ -146,27 +152,30 @@ class UserAdminController extends User
             } else {
                 $images = $infoUser['avatar'];
             }
-    
+
             if (empty($errors)) {
                 $updateUser = $this->edit($id, trim($_POST["name"]), $images, trim($_POST["address"]), trim($_POST["email"]), trim($_POST["phone"]), trim($_POST["password"]), trim($_POST["role"]), trim($_POST["active"]));
                 if ($updateUser) {
-                    echo '<div class="alert alert-success">Sửa thành công!</div>';
-                    echo '<script>
-                        setTimeout(function() {
-                            window.location.href = "index.php?act=user";
-                        }, 3000);
-                    </script>';
+                    // echo '<div class="alert alert-success">Sửa thành công!</div>';
+                    // echo '<script>
+                    //     setTimeout(function() {
+                    //         window.location.href = "index.php?act=user";
+                    //     }, 3000);
+                    // </script>';
+                    $_SESSION["success"] = "Sửa người dùng thành công";
+                    header('Location:?act=user');
                     exit();
                 } else {
+                    $_SESSION["error"] = "Sửa người dùng thất bại";
                     header('Location: ' . $_SERVER['HTTP_REFERER']);
                     exit();
                 }
             }
         }
-    
+
         include "../views/admin/user/edit.php";
     }
-    
+
 
     public function detailUser($id)
     {

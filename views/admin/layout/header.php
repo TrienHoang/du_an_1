@@ -12,8 +12,8 @@
     <meta name="keywords"
         content="admin template, Fastkart admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="pixelstrap">
-    <link rel="icon" href="../public/admin/assets//images/favicon.png" type="image/x-icon">
-    <link rel="shortcut icon" href="../public/admin/assets//images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="../public/admin/assets/images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../public/admin/assets/images/favicon.png" type="image/x-icon">
     <title>TechFusion - Dashboard</title>
 
     <!-- Google font-->
@@ -22,41 +22,68 @@
         rel="stylesheet">
 
     <!-- Linear Icon css -->
-    <link rel="stylesheet" href="../public/admin/assets//css/linearicon.css">
+    <link rel="stylesheet" href="../public/admin/assets/css/linearicon.css">
 
     <!-- fontawesome css -->
-    <link rel="stylesheet" type="text/css" href="../public/admin/assets//css/vendors/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../public/admin/assets/css/vendors/font-awesome.css">
 
     <!-- Themify icon css-->
-    <link rel="stylesheet" type="text/css" href="../public/admin/assets//css/vendors/themify.css">
+    <link rel="stylesheet" type="text/css" href="../public/admin/assets/css/vendors/themify.css">
 
     <!-- ratio css -->
-    <link rel="stylesheet" type="text/css" href="../public/admin/assets//css/ratio.css">
+    <link rel="stylesheet" type="text/css" href="../public/admin/assets/css/ratio.css">
 
     <!-- remixicon css -->
-    <link rel="stylesheet" type="text/css" href="../public/admin/assets//css/remixicon.css">
+    <link rel="stylesheet" type="text/css" href="../public/admin/assets/css/remixicon.css">
 
     <!-- Feather icon css-->
-    <link rel="stylesheet" type="text/css" href="../public/admin/assets//css/vendors/feather-icon.css">
+    <link rel="stylesheet" type="text/css" href="../public/admin/assets/css/vendors/feather-icon.css">
 
     <!-- Plugins css -->
-    <link rel="stylesheet" type="text/css" href="../public/admin/assets//css/vendors/scrollbar.css">
-    <link rel="stylesheet" type="text/css" href="../public/admin/assets//css/vendors/animate.css">
+    <link rel="stylesheet" type="text/css" href="../public/admin/assets/css/vendors/scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="../public/admin/assets/css/vendors/animate.css">
 
     <!-- Bootstrap css-->
-    <link rel="stylesheet" type="text/css" href="../public/admin/assets//css/vendors/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../public/admin/assets/css/vendors/bootstrap.css">
 
     <!-- vector map css -->
-    <link rel="stylesheet" type="text/css" href="../public/admin/assets//css/vector-map.css">
+    <link rel="stylesheet" type="text/css" href="../public/admin/assets/css/vector-map.css">
 
     <!-- Slick Slider Css -->
     <link rel="stylesheet" href="../public/admin/assets//css/vendors/slick.css">
 
     <!-- App css -->
     <link rel="stylesheet" type="text/css" href="../public/admin/assets//css/style.css">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- toastr js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 </head>
 
 <body>
+<?php
+    if (isset($_SESSION['error'])) {
+        echo "<script type='text/javascript'>
+        toastr.warning(\"{$_SESSION['error']}\")
+        </script>";
+
+        // Xóa session
+        unset($_SESSION['error']);
+    }
+
+    if (isset($_SESSION['success'])) {
+        echo "<script type='text/javascript'>
+        toastr.success(\"{$_SESSION['success']}\")
+        </script>";
+
+        // Xóa session
+        unset($_SESSION['success']);
+    }
+?>
+
     <!-- tap on top start -->
     <div class="tap-top">
         <span class="lnr lnr-chevron-up"></span>
@@ -141,15 +168,9 @@
                                     </a>
                                     <ul class="sidebar-submenu">
                                         <li>
-                                            <a href="index.php?act=product">Products</a>
+                                            <a href="index.php?act=product">List Products</a>
                                         </li>
 
-                                        <li>
-                                            <a href="index.php?act=product-create">Add New Product</a>
-                                        </li>
-                                        <li>
-                                            <a href="index.php?act=product-edit">Edit Product</a>
-                                        </li>
                                     </ul>
                                 </li>
 
@@ -217,88 +238,6 @@
                                         
                                     </ul>
                                 </li>
-
-                                <!-- <li class="sidebar-list">
-                                    <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
-                                        <i class="ri-focus-3-line"></i>
-                                        <span>Localization</span>
-                                    </a>
-                                    <ul class="sidebar-submenu">
-                                        <li>
-                                            <a href="translation.html">Translation</a>
-                                        </li>
-
-                                        <li>
-                                            <a href="currency-rates.html">Currency Rates</a>
-                                        </li>
-                                    </ul>
-                                </li> -->
-
-                                <!-- <li class="sidebar-list">
-                                    <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
-                                        <i class="ri-price-tag-3-line"></i>
-                                        <span>Coupons</span>
-                                    </a>
-                                    <ul class="sidebar-submenu">
-                                        <li>
-                                            <a href="coupon-list.html">Coupon List</a>
-                                        </li>
-
-                                        <li>
-                                            <a href="create-coupon.html">Create Coupon</a>
-                                        </li>
-                                    </ul>
-                                </li>
-
-                                <li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title link-nav" href="taxes.html">
-                                        <i class="ri-price-tag-3-line"></i>
-                                        <span>Tax</span>
-                                    </a>
-                                </li>
-
-                                <li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title link-nav" href="product-review.html">
-                                        <i class="ri-star-line"></i>
-                                        <span>Product Review</span>
-                                    </a>
-                                </li>
-
-                                <li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title link-nav" href="support-ticket.html">
-                                        <i class="ri-phone-line"></i>
-                                        <span>Support Ticket</span>
-                                    </a>
-                                </li>
-
-                                <li class="sidebar-list">
-                                    <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
-                                        <i class="ri-settings-line"></i>
-                                        <span>Settings</span>
-                                    </a>
-                                    <ul class="sidebar-submenu">
-                                        <li>
-                                            <a href="profile-setting.html">Profile Setting</a>
-                                        </li>
-                                    </ul>
-                                </li>
-
-                                <li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title link-nav" href="reports.html">
-                                        <i class="ri-file-chart-line"></i>
-                                        <span>Reports</span>
-                                    </a>
-                                </li>
-
-                                <li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title link-nav" href="list-page.html">
-                                        <i class="ri-list-check"></i>
-                                        <span>List Page</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div> -->
-
                         <div class="right-arrow" id="right-arrow">
                             <i data-fe  ather="arrow-right"></i>
                         </div>
