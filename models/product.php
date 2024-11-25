@@ -59,6 +59,7 @@ class Product extends connect
         products.price as product_price,
         products.sale_price as product_sale_price,
         products.image as product_image,
+        products.slug as product_slug,
         products.status as product_status,
         categories.category_id as category_id,
         categories.name as category_name,
@@ -180,5 +181,87 @@ class Product extends connect
         $stmt = $this->connect()->prepare($sql);
         return $stmt->execute([$_GET['variant_id']]);
     }
+
+    public function getProductBySlug($slug) {
+        $sql = 'SELECT 
+            products.product_id AS product_id,
+            products.name AS product_name,
+            products.price AS product_price,
+            products.sale_price AS product_sale_price,
+            products.image AS product_image,
+            products.slug AS product_slug,
+            products.description AS product_description,
+            products.status AS product_status,
+            categories.category_id AS category_id,
+            categories.name AS category_name,
+            product_variants.product_id AS product_variant_id,  
+            product_variants.sale_price AS variant_sale_price,
+            product_variants.price AS variant_price,
+            product_variants.quantity AS variant_quantity,
+            variant_colors.color_name AS variant_color_name,
+            variant_colors.color_code AS variant_color_code,
+            variant_size.size_name AS variant_size_name,  
+            product_galleries.image AS product_gallery_image
+        FROM products
+            LEFT JOIN product_variants ON products.product_id = product_variants.product_id
+            LEFT JOIN variant_colors ON product_variants.variant_color_id = variant_colors.variant_color_id
+            LEFT JOIN variant_size ON product_variants.variant_size_id = variant_size.variant_size_id
+            LEFT JOIN categories ON products.category_id = categories.category_id
+            LEFT JOIN product_galleries ON products.product_id = product_galleries.product_id
+        WHERE products.slug = ?';
+    
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$slug]);  
+    
+        $listProduct = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+        if (empty($listProduct)) {
+            return [];  
+        }
+    
+        $groupedProducts = [];
+    
+        foreach ($listProduct as $product) {
+            if (!isset($groupedProducts[$product['product_id']])) {
+                $groupedProducts[$product['product_id']] = $product;
+                $groupedProducts[$product['product_id']]['variants'] = [];
+                $groupedProducts[$product['product_id']]['galleries'] = [];
+            }
+    
+            $exists = false;
+            foreach ($groupedProducts[$product['product_id']]['variants'] as $variant) {
+                if (
+                    $variant['variant_color_name'] == $product['variant_color_name'] &&
+                    $variant['variant_size_name'] == $product['variant_size_name']
+                ) {
+                    $exists = true;
+                    break;
+                }
+            }
+    
+            if (!$exists) {
+                $groupedProducts[$product['product_id']]['variants'][] = [
+                    'product_variant_id' => $product['product_variant_id'],
+                    'product_variant_sale_price' => $product['variant_sale_price'],
+                    'product_variant_price' => $product['variant_price'],
+                    'product_variant_quantity' => $product['variant_quantity'],
+                    'variant_color_name' => $product['variant_color_name'],
+                    'variant_color_code' => $product['variant_color_code'],
+                    'variant_size_name' => $product['variant_size_name'],
+                ];
+            }
+    
+            if (!empty($product['product_gallery_image'] && !in_array($product['product_gallery_image'],
+                $groupedProducts[$product['product_id']]['galleries']))) {
+                $groupedProducts[$product['product_id']]['galleries'][] = $product['product_gallery_image'];
+            }
+        }
+    
+        return $groupedProducts;
+    }
+    
+    
+    
+
 }
     

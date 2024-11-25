@@ -1,17 +1,31 @@
 <?php
 session_start();
 require_once '../controllers/admin/CategoryAdminController.php';
-
-require_once '../controllers/client/index.php';
-
 require_once '../controllers/admin/UserAdminController.php';
+require_once '../controllers/client/AuthController.php';
+require_once '../controllers/client/HomeController.php';
+require_once '../controllers/client/ProfileController.php';
+require_once '../controllers/client/CartController.php';
 
 require_once '../controllers/admin/ProductAdminController.php';
+// require_once '../controllers/client/SearchController.php';
+// require_once '../controllers/client/SearchController.php';
+
 
 $action = isset($_GET['act']) ? $_GET['act'] : 'index';
 $categoryAdmin = new CategoryAdminController();
 $userAdmin = new UserAdminController();
 $productAdmin = new ProductAdminController();
+
+
+
+
+$auth = new AuthController();
+$home = new HomeController();
+$profile = new ProfileController();
+$cart = new CartController();
+// $search = new SearchController();
+// $searchController = new SearchController();
 
 
 
@@ -71,47 +85,49 @@ switch ($action) {
         break;
         //=============================================
     case 'login':
-        if (isset($_POST['login']) && ($_POST['login'])) {
-            $name = $_POST['name'];
-            $password = $_POST['password'];
-            $checkAccount = checkAccount($name, $password);
-            if (is_array($checkAccount)) {
-                $_SESSION['name'] = $checkAccount;
-                header('location: index.php');
-                // $thongbao="Bạn đã đăng nhập thành công!";
-            } else {
-                $thongbao = "Tài khoản không tồn tại! Vui lòng đăng ký!";
-            }
-            $thongbao = "Bạn đã đăng ký thành công! Vui lòng đăng nhập!";
-        }
-        include "../views/client/auth/login.php";
+        $auth->handleLogin();
         break;
 
     case 'register':
-        if (isset($_POST['register']) && ($_POST['register'])) {
-            $name = $_POST['name'];
-            $phone = $_POST['phone'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-            insert_account($name, $phone, $email, $password);
-            $thongbao = "Bạn đã đăng ký thành công! Vui lòng đăng nhập!";
-        }
-        include "../views/client/auth/register.php";
+        $auth->handleRegister();
         break;
+    case 'profile':
+        include "../views/client/profile/profile.php";
+        break;
+    case 'update-profile':
+        $profile->updateProfile();
+        break;
+    case 'logout':
+        session_unset();
+        header('location: index.php');
+        break;
+    // case 'search':
+    //     $searchController->handleSearch();
+    //     break;
+        
     case 'forgotPassword':
-        if (isset($_POST['gui']) && ($_POST['gui'])) {
-            $email = $_POST['email'];
-            $checkEmail = checkEmail($email);
-            if (is_array($checkEmail)) {
-                $thongbao = "Mật khẩu của bạn là: " . $checkEmail['password'];
-            } else {
-                $thongbao = "Email này không tồn tại!";
-            }
-        }
+        // if(isset($_POST['gui'])&&($_POST['gui'])){
+        //     $email=$_POST['email'];
+        //     $checkEmail = checkEmail($email);
+        //     if(is_array($checkEmail)){
+        //         $thongbao = "Mật khẩu của bạn là: ".$checkEmail['password'];
+        //     }else{
+        //         $thongbao="Email này không tồn tại!";
+        //     }
+        // }
         include "../views/client/auth/forgotPassword.php";
         break;
         //==============================================================
     case 'index':
-        include "../views/client/index.php";
+        $home->index();
+        break;
+    case 'product_detail':
+        $home->getProductDetail();
+        break;
+    case 'cart':
+        $cart->index();
+        break;
+    case 'addToCart-byNow':
+        $cart->addToCartByNow();
         break;
 }

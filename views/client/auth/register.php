@@ -53,7 +53,7 @@ include "../views/client/layout/header.php";
           border: 1px solid #f5f5f5;
           color: white;
           width: 100%;
-          background-color: rgb(201, 13, 13);
+          background-color: #0075FF;
           border-radius: 6px;
           text-transform: uppercase;
           padding: 10px 10px;
@@ -66,89 +66,137 @@ include "../views/client/layout/header.php";
       .eye {
           cursor: pointer;
       }
+     
     </style>
 </head>
 <body>
-    <div id="wrapper">
-      <form id="form-register" action="index.php?act=register" method="post">
-          <h1 class="form-heading">Đăng ký</h1>
-          <!-- Tên tài khoản -->
-          <div class="form-group">
-            <i class="fa-solid fa-user"></i>
-            <input type="text" class="form-input" placeholder="Tên tài khoản" required name="name">
-          </div>
-          <!-- Họ tên -->
-          <div class="form-group">
-            <i class="fa-solid fa-id-card"></i>
-            <input type="text" class="form-input" placeholder="Họ tên" required name="name">
-          </div>
-          <!-- Số điện thoại -->
-          <div class="form-group">
-            <i class="fa-solid fa-phone"></i>
-            <input type="tel" class="form-input" placeholder="Số điện thoại" pattern="[0-9]{10}" required name="phone">
-          </div>
-          <!-- Email -->
-          <div class="form-group">
-            <i class="fa-solid fa-envelope"></i>
-            <input type="email" class="form-input" placeholder="Email" required name="email">
-          </div>
-          <!-- Ngày sinh -->
-          <div class="form-group">
-            <i class="fa-solid fa-calendar"></i>
-            <input type="date" class="form-input" required >
-          </div>
-          <!-- Mật khẩu -->
-          <div class="form-group">
-            <i class="fa-solid fa-key"></i>
-            <input id="password1" type="password" class="form-input" placeholder="Mật khẩu" required name="password">
-            <span class="eye" id="eye1">
-              <i class="fa-solid fa-eye"></i>
-            </span>
-          </div>
-          <!-- Nhập lại mật khẩu -->
-          <div class="form-group">
-            <i class="fa-solid fa-key"></i>
-            <input id="password2" type="password" class="form-input" placeholder="Nhập lại mật khẩu" required name="repass">
-            <span class="eye" id="eye2">
-              <i class="fa-solid fa-eye"></i>
-            </span>
-          </div>
-          <!-- Submit -->
-          <input type="submit" value="Đăng ký" class="form-submit" name="register">
-      </form>
-      <?php
-        if(isset($thongbao)&&($thongbao!="")){
-            echo $thongbao;
-        }
-      ?>
-    </div>
+  
+<div id="wrapper">
+
+<?php
+if (isset($_SESSION['success'])) {
+    echo '<div class="alert alert-success">' . $_SESSION['success'] . '</div>';
+    unset($_SESSION['success']);  
+}
+
+
+if (isset($_SESSION['error'])) {
+    echo '<div class="alert alert-danger">' . $_SESSION['error'] . '</div>';
+    unset($_SESSION['error']);  
+}
+
+
+if (isset($_SESSION['errors'])) {
+    foreach ($_SESSION['errors'] as $key => $error) {
+        echo '<div class="alert alert-warning">' . $error . '</div>';
+    }
+    unset($_SESSION['errors']); 
+}
+?>
+
+
+<form id="form-register" action="index.php?act=register" method="post">
+  
+  <h1 class="form-heading">Đăng ký</h1>
+
+  <div class="form-group">
+    <i class="fa-solid fa-user"></i>
+    <input type="text" class="form-input" placeholder="Tên tài khoản"  name="name">
+    <?php if (isset($_SESSION['errors']['name'])) : ?>
+      <p class="text-danger"><?= $_SESSION['errors']['name'] ?></p>
+    <?php endif; ?>
+  </div>
+
+  <!-- <div class="form-group">
+    <i class="fa-solid fa-id-card"></i>
+    <input type="text" class="form-input" placeholder="Họ tên" required name="name">
+  </div> -->
+
+  <div class="form-group">
+    <i class="fa-solid fa-phone"></i>
+    <input type="tel" class="form-input" placeholder="Số điện thoại" pattern="[0-9]{10}"  name="phone">
+  </div>
+
+  <div class="form-group">
+    <i class="fa-solid fa-envelope"></i>
+    <input type="email" class="form-input" placeholder="Email"  name="email">
+    <?php if (isset($_SESSION['errors']['email'])) : ?>
+      <p class="text-danger"><?= $_SESSION['errors']['email'] ?></p>
+    <?php endif; ?>
+  </div>
+
+  <div class="form-group">
+    <i class="fa-solid fa-calendar"></i>
+    <input type="date" class="form-input"  >
+  </div>
+
+  <div class="form-group">
+    <i class="fa-solid fa-key"></i>
+    <input id="password1" type="password" class="form-input" placeholder="Mật khẩu"  name="password">
+    <span class="eye" id="eye1">
+      <i class="fa-solid fa-eye"></i>
+    </span>
+    <?php if (isset($_SESSION['errors']['password'])) : ?>
+      <p class="text-danger"><?= $_SESSION['errors']['password'] ?></p>
+    <?php endif; ?>
+  </div>
+
+  <div class="form-group">
+    <i class="fa-solid fa-key"></i>
+    <input id="password2" type="password" class="form-input" placeholder="Nhập lại mật khẩu" name="confirm_password">
+    <span class="eye" id="eye2">
+        <i class="fa-solid fa-eye"></i>
+    </span>
+    <?php if (isset($_SESSION['errors']['confirm_password'])) : ?>
+        <p class="text-danger"><?= $_SESSION['errors']['confirm_password'] ?></p>
+    <?php endif; ?>
+</div>
+
+
+  <input type="submit" value="Đăng ký" class="form-submit" name="register">
+
+  <div class="login-link">
+      <span> <a href="index.php?act=login">Đăng nhập ngay</a></span>
+  </div>
+
+</form>
+
+  <?php
+    if(isset($thongbao)&&($thongbao!="")){
+        echo $thongbao;
+    }
+  ?>
+
+</div>
 </body>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const togglePasswordVisibility = (eyeId, passwordId) => {
-            const eyeIcon = document.getElementById(eyeId);
-            const passwordField = document.getElementById(passwordId);
+document.addEventListener("DOMContentLoaded", function() {
+const togglePasswordVisibility = (eyeId, passwordId) => {
+const eyeIcon = document.getElementById(eyeId);
+const passwordField = document.getElementById(passwordId);
 
-            if (eyeIcon && passwordField) {
-                eyeIcon.addEventListener("click", function() {
-                    const icon = eyeIcon.querySelector("i");
-                    icon.classList.toggle("fa-eye");
-                    icon.classList.toggle("fa-eye-slash");
+if (eyeIcon && passwordField) {
+  eyeIcon.addEventListener("click", function() {
+      const icon = eyeIcon.querySelector("i");
+      icon.classList.toggle("fa-eye");
+      icon.classList.toggle("fa-eye-slash");
 
-                    passwordField.type = passwordField.type === "password" ? "text" : "password";
-                });
-            } else {
-                console.error(`Phần tử '#${eyeId}' hoặc '#${passwordId}' không tồn tại trong DOM.`);
-            }
-        };
+      passwordField.type = passwordField.type === "password" ? "text" : "password";
+  });
+} else {
+  console.error(`Phần tử '#${eyeId}' hoặc '#${passwordId}' không tồn tại trong DOM.`);
+}
+};
 
-        togglePasswordVisibility("eye1", "password1");
-        togglePasswordVisibility("eye2", "password2");
-    });
+togglePasswordVisibility("eye1", "password1");
+togglePasswordVisibility("eye2", "password2");
+});
+
 </script>
 </html>
 
 
 <?php
+unset($_SESSION['errors']);
 include "../views/client/layout/footer.php";
 ?>

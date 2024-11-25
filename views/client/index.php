@@ -86,9 +86,33 @@ include "../views/client/layout/header.php";
         .slider-content-top:hover i{
             opacity: 1;
         }
-        .xc-sec-heading{
-            padding-top: 40px;
+        .row {
+            display: flex;
+            flex-wrap: wrap; 
+            gap: 20px;
         }
+
+        .col {
+            flex: 0 0 calc(25% - 20px); 
+            max-width: calc(25% - 20px); 
+            box-sizing: border-box; 
+        }
+        .xc-product-two__item {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .xc-product-two__item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .xc-product-two__img img {
+            width: 100%;
+            height: auto;
+        }
+
 
     </style>
 </head>
@@ -154,14 +178,17 @@ include "../views/client/layout/header.php";
             <div class="container">
                 <div class="row">
                     <div class="col-xl-3 col-xxl-2 d-none d-xl-block">
-                        <div class="xc-banner-one__cat">
-                            <ul>
-                                <li><a href="#">Fashion & Accessories</a></li>
-                                <li><a href="#">Sports & Entertainment</a></li>
-                                <li><a href="#">Health & Beauty</a></li>
-                                <li><a href="#">Digital & Electronics</a></li>
-                                <li><a href="#">Tools, Equipment</a></li>
+                        <div class="xc-banner-one__cat" style="width: 350px;">
+                            <?php foreach($category as $cate) : ?>
+                            <ul style="padding: 5px 0px;">
+                                <li>
+                                    <a href="#">
+                                        <img style="width: 55px; margin-right: 20px;" src="./images/category/<?=$cate['image']?>" alt="">
+                                        <?=$cate['name'] ?>
+                                    </a>
+                                </li>
                             </ul>
+                            <?php endforeach ;?>
                         </div>
                     </div>
                     <div class="col-12 col-xl-9 col-xxl-9" style="padding-left: 80px;">
@@ -201,238 +228,57 @@ include "../views/client/layout/header.php";
 
         <!-- product two start -->
         <div class="xc-product-two pb-80">
-            <div class="container">
-                <div class="xc-sec-heading">
-                    <h3 class="xc-sec-heading__title"><span><i class="icon-power"></i></span>Recommended Items</h3>
-                </div>
-                <div class="row gutter-y-20 row-cols-1 row-cols-md-2 row-cols-lg-4 row-cols-xl-5 ">
-                    <div class="col">
-                        <div class="xc-product-two__item">
-                            <span class="xc-product-two__deal d-none">BEST DEALS</span>
-                            <div class="xc-product-two__img">
-                                <img src="../public/client/assets//img/products/product-2-1.png" alt="product">
-                            </div>
-                            <div class="xc-product-two__ratting">
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                (125)
-                            </div>
-                            <h3 class="xc-product-two__title"><a href="#">Basics High-Speed HDMI Cable 18 Gbps, 4K/6</a></h3>
-                            <h4 class="xc-product-two__price">$360</h4>
-                            <div class="xc-product-two__btn">
-                                <a href="product-details.html"><i class="icon-eye"></i></a>
-                                <a href="cart.html"><i class="icon-grocery-store"></i></a>
-                            </div>
-                        </div>
+    <div class="container">
+        <div class="xc-sec-heading">
+            <h3 class="xc-sec-heading__title"><span><i class="icon-power"></i></span>Recommended Items</h3>
+        </div>
+        <div class="row">
+            <?php foreach($product as $pro): ?>
+            <div class="col">
+                <div class="xc-product-two__item">
+                    <span class="xc-product-two__deal d-none">BEST DEALS</span>
+
+                    <div class="xc-product-two__img">
+                        <img src="./images/product/<?php echo $pro['product_image']?>" alt="product">
                     </div>
-                    <div class="col">
-                        <div class="xc-product-two__item">
-                            <span class="xc-product-two__deal">BEST DEALS</span>
-                            <div class="xc-product-two__img">
-                                <img src="../public/client/assets//img/products/product-2-2.png" alt="product">
-                            </div>
-                            <div class="xc-product-two__ratting">
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                (125)
-                            </div>
-                            <h3 class="xc-product-two__title"><a href="#">Basics High-Speed HDMI Cable 18 Gbps, 4K/6</a></h3>
-                            <h4 class="xc-product-two__price">$360</h4>
-                            <div class="xc-product-two__btn">
-                                <a href="product-details.html"><i class="icon-eye"></i></a>
-                                <a href="cart.html"><i class="icon-grocery-store"></i></a>
-                            </div>
-                        </div>
+
+                    <h5 class="xc-product-two__title">
+                        <a href="#" style="font-size: 12px;"><?php echo $pro['category_name']?></a>
+                    </h5>
+
+                    <h3 class="xc-product-two__title"><strong><a href="#"><?php echo $pro['product_name']?></a></strong></h3>
+
+                    <div class="xc-product-two__btn">
+                    <a href="?act=product_detail&slug=<?= $pro['product_slug'] ?>"><i class="icon-eye"></i></a>
+
+                        <a href="cart.html"><i class="icon-grocery-store"></i></a>
                     </div>
-                    <div class="col">
-                        <div class="xc-product-two__item">
-                            <span class="xc-product-two__deal">BEST DEALS</span>
-                            <div class="xc-product-two__img">
-                                <img src="../public/client/assets//img/products/product-2-3.png" alt="product">
-                            </div>
-                            <div class="xc-product-two__ratting">
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                (125)
-                            </div>
-                            <h3 class="xc-product-two__title"><a href="#">Basics High-Speed HDMI Cable 18 Gbps, 4K/6</a></h3>
-                            <h4 class="xc-product-two__price">$360</h4>
-                            <div class="xc-product-two__btn">
-                                <a href="product-details.html"><i class="icon-eye"></i></a>
-                                <a href="cart.html"><i class="icon-grocery-store"></i></a>
-                            </div>
-                        </div>
+                    
+                    <div>
+                        <h4 class="xc-product-two__price" style="font-size: 12px; color: gray;"><del><?php echo number_format($pro['product_sale_price']* 1000,0, '.','.') ?>đ</del></h4>
+                        <h4 class="xc-product-two__price"><?php echo number_format($pro['product_price']* 1000,0, '.','.') ?>đ</h4>
                     </div>
-                    <div class="col">
-                        <div class="xc-product-two__item">
-                            <span class="xc-product-two__deal d-none">BEST DEALS</span>
-                            <div class="xc-product-two__img">
-                                <img src="../public/client/assets//img/products/product-2-4.png" alt="product">
-                            </div>
-                            <div class="xc-product-two__ratting">
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                (125)
-                            </div>
-                            <h3 class="xc-product-two__title"><a href="#">Basics High-Speed HDMI Cable 18 Gbps, 4K/6</a></h3>
-                            <h4 class="xc-product-two__price">$360</h4>
-                            <div class="xc-product-two__btn">
-                                <a href="product-details.html"><i class="icon-eye"></i></a>
-                                <a href="cart.html"><i class="icon-grocery-store"></i></a>
-                            </div>
-                        </div>
+
+                    <div class="xc-product-two__ratting">
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <span>(0 review)</span>
                     </div>
-                    <div class="col">
-                        <div class="xc-product-two__item">
-                            <span class="xc-product-two__deal d-none">BEST DEALS</span>
-                            <div class="xc-product-two__img">
-                                <img src="../public/client/assets//img/products/product-2-5.png" alt="product">
-                            </div>
-                            <div class="xc-product-two__ratting">
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                (125)
-                            </div>
-                            <h3 class="xc-product-two__title"><a href="#">Basics High-Speed HDMI Cable 18 Gbps, 4K/6</a></h3>
-                            <h4 class="xc-product-two__price">$360</h4>
-                            <div class="xc-product-two__btn">
-                                <a href="product-details.html"><i class="icon-eye"></i></a>
-                                <a href="cart.html"><i class="icon-grocery-store"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="xc-product-two__item">
-                            <span class="xc-product-two__deal d-none">BEST DEALS</span>
-                            <div class="xc-product-two__img">
-                                <img src="../public/client/assets//img/products/product-2-6.png" alt="product">
-                            </div>
-                            <div class="xc-product-two__ratting">
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                (125)
-                            </div>
-                            <h3 class="xc-product-two__title"><a href="#">Basics High-Speed HDMI Cable 18 Gbps, 4K/6</a></h3>
-                            <h4 class="xc-product-two__price">$360</h4>
-                            <div class="xc-product-two__btn">
-                                <a href="product-details.html"><i class="icon-eye"></i></a>
-                                <a href="cart.html"><i class="icon-grocery-store"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="xc-product-two__item">
-                            <span class="xc-product-two__deal">BEST DEALS</span>
-                            <div class="xc-product-two__img">
-                                <img src="../public/client/assets//img/products/product-2-7.png" alt="product">
-                            </div>
-                            <div class="xc-product-two__ratting">
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                (125)
-                            </div>
-                            <h3 class="xc-product-two__title"><a href="#">Basics High-Speed HDMI Cable 18 Gbps, 4K/6</a></h3>
-                            <h4 class="xc-product-two__price">$360</h4>
-                            <div class="xc-product-two__btn">
-                                <a href="product-details.html"><i class="icon-eye"></i></a>
-                                <a href="cart.html"><i class="icon-grocery-store"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="xc-product-two__item">
-                            <span class="xc-product-two__deal d-none">BEST DEALS</span>
-                            <div class="xc-product-two__img">
-                                <img src="../public/client/assets//img/products/product-2-8.png" alt="product">
-                            </div>
-                            <div class="xc-product-two__ratting">
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                (125)
-                            </div>
-                            <h3 class="xc-product-two__title"><a href="#">Basics High-Speed HDMI Cable 18 Gbps, 4K/6</a></h3>
-                            <h4 class="xc-product-two__price">$360</h4>
-                            <div class="xc-product-two__btn">
-                                <a href="product-details.html"><i class="icon-eye"></i></a>
-                                <a href="cart.html"><i class="icon-grocery-store"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="xc-product-two__item">
-                            <span class="xc-product-two__deal">BEST DEALS</span>
-                            <div class="xc-product-two__img">
-                                <img src="../public/client/assets//img/products/product-2-9.png" alt="product">
-                            </div>
-                            <div class="xc-product-two__ratting">
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                (125)
-                            </div>
-                            <h3 class="xc-product-two__title"><a href="#">Basics High-Speed HDMI Cable 18 Gbps, 4K/6</a></h3>
-                            <h4 class="xc-product-two__price">$360</h4>
-                            <div class="xc-product-two__btn">
-                                <a href="product-details.html"><i class="icon-eye"></i></a>
-                                <a href="cart.html"><i class="icon-grocery-store"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="xc-product-two__item">
-                            <span class="xc-product-two__deal d-none">BEST DEALS</span>
-                            <div class="xc-product-two__img">
-                                <img src="../public/client/assets//img/products/product-2-10.png" alt="product">
-                            </div>
-                            <div class="xc-product-two__ratting">
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                (125)
-                            </div>
-                            <h3 class="xc-product-two__title"><a href="#">Basics High-Speed HDMI Cable 18 Gbps, 4K/6</a></h3>
-                            <h4 class="xc-product-two__price">$360</h4>
-                            <div class="xc-product-two__btn">
-                                <a href="product-details.html"><i class="icon-eye"></i></a>
-                                <a href="cart.html"><i class="icon-grocery-store"></i></a>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
+            <?php endforeach; ?>
         </div>
+    </div>
+</div>
+
         <!-- product two end -->
 
         <!-- top sale product start -->
-        <div class="xc-product-four pb-80">
+        <!-- <div class="xc-product-four pb-80">
             <div class="container">
                 <div class="xc-sec-heading xc-has-btn">
                     <h3 class="xc-sec-heading__title"><span><i class="icon-power"></i></span>Top Sale Product</h3>
@@ -441,7 +287,7 @@ include "../views/client/layout/header.php";
                     </div>
                 </div>
                 <div class="row gutter-y-60">
-                    <!-- <div class="col-xl-3">
+                    <div class="col-xl-3">
                         <div class="xc-banner-four">
                             <div class="xc-banner-four__img">
                                 <img src="../public/client/assets//img/banner/banner-4-1.jpg" alt="banner4">
@@ -452,7 +298,7 @@ include "../views/client/layout/header.php";
                                 <a href="shop.html" class="swiftcart-btn w-100">Shop now <i class="icon-next"></i></a>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
                     <div class="col-xl-12">
                         <div class="xc-product-four__wrapper">
                             <div class="row gutter-y-20">
@@ -641,7 +487,7 @@ include "../views/client/layout/header.php";
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
 
 

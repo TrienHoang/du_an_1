@@ -44,7 +44,6 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : null; ?>
 </head>
 
 <body>
-
     <div class="xc-preloader">
         <div class="xc-preloader__image">
             <img src="../public/client/assets/img/preloader/preloader.png" alt="preloader">
@@ -64,26 +63,35 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : null; ?>
                         </div>
                         <div class="xc-header-one__right">
                             <div class="xc-header-one__search d-none d-xl-block">
-                                <form action="#">
-                                    <input type="search" placeholder="Tìm kiếm tại đây...">
-                                    <button type="submit">Tìm kiếm</button>
+                                <form action="?act=search" method="post">
+                                    <input type="search" placeholder="Tìm kiếm tại đây..." name="keyword">
+                                    <button type="submit" name="search">Tìm kiếm</button>
                                 </form>
                             </div>
                             <div class="xc-header-one__btns d-none d-lg-flex">
 
-                                <a href="cart.html" class="xc-header-one__btn">
+                                <a href="?act=cart" class="xc-header-one__btn">
                                     <i class="icon-grocery-store"></i>Giỏ hàng
                                 </a>
+                                <!-- <a href="index.php?act=login" class="xc-header-one__btn">
+                                    <i class="icon-user"></i>Đăng nhập
+                                </a> -->
+                                <!-- <?php if($role==0){ ?>
+                                <a href="index.php?act=admin" class="xc-header-one__btn">
+                                    <i class="icon-user"></i>Admin
+                                </a>
+                                <?php } ?> -->
+
+                                <?php if(!isset($_SESSION['user'])): ?>
                                 <a href="index.php?act=login" class="xc-header-one__btn">
                                     <i class="icon-user"></i>Đăng nhập
                                 </a>
-                                <?php if($role==0){ ?>
-                                <a href="admin/index.php" class="xc-header-one__btn">
-                                    <i class="icon-user"></i>Admin
-                                </a>
-                                <?php } ?>
-
-                                
+                                <?php else: ?>
+                                    <a href="index.php?act=profile" class="xc-header-one__btn">
+                                    <i class="icon-user"></i>
+                                    <span>Xin chào <?=$_SESSION['user']['name']?></span>
+                                    </a>
+                                <?php endif; ?>
                                 <!-- mobile drawer  -->
                                 <div class="xc-header-one__hamburger d-xl-none">
                                     <button type="button" class="xc-offcanvas-btn xc-header-one__btn">
