@@ -2,24 +2,25 @@
 session_start();
 require_once '../controllers/admin/CategoryAdminController.php';
 
-require_once '../controllers/client/index.php';
-
 require_once '../controllers/admin/UserAdminController.php';
 
 require_once '../controllers/admin/ProductAdminController.php';
 
+require_once '../controllers/admin/CouponController.php';
+
+require_once '../controllers/client/index.php';
 $action = isset($_GET['act']) ? $_GET['act'] : 'index';
 $categoryAdmin = new CategoryAdminController();
 $userAdmin = new UserAdminController();
 $productAdmin = new ProductAdminController();
-
+$couponAdmin = new CouponController();
 
 
 switch ($action) {
-    case 'admin':
+    case 'admin': // Trang chủ admin
         include "../views/admin/index.php";
         break;
-    case 'product':
+    case 'product': // Crud Sản phẩm
         $productAdmin->index();
         break;
     case 'product-create':
@@ -37,7 +38,22 @@ switch ($action) {
     case 'variant-delete':
         $productAdmin->deleteProductVariant();
         break;
-    case 'category':
+    case 'coupon': // Crud giảm giá
+        $couponAdmin->index();
+        break;
+    case 'coupon-create':
+        $couponAdmin->create();
+        break;
+    case 'coupon-edit':
+        $couponAdmin->update();
+        break;
+    case 'coupon-detail':
+        $couponAdmin->detail();
+        break;
+    case 'coupon-delete':
+        $couponAdmin->delete();
+        break;
+    case 'category': // CRUD danh mục sản phẩm
         $categoryAdmin->index();
         break;
     case 'category-create':
@@ -55,7 +71,7 @@ switch ($action) {
     case 'category-delete':
         $categoryAdmin->deleteCategory();
         break;
-    case 'user':
+    case 'user': // CRUD Người dùng
         $userAdmin->listUsers();
         break;
     case 'user-create':
