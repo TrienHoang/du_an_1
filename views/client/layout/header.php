@@ -41,10 +41,34 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : null; ?>
     <!-- template styles -->
     <link rel="stylesheet" href="../public/client/assets/css/swiftcart.css" />
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- toastr js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+
 </head>
 
 <body>
+<?php
+    if (isset($_SESSION['error'])) {
+        echo "<script type='text/javascript'>
+        toastr.warning(\"{$_SESSION['error']}\")
+        </script>";
 
+        // Xóa session
+        unset($_SESSION['error']);
+    }
+
+    if (isset($_SESSION['success'])) {
+        echo "<script type='text/javascript'>
+        toastr.success(\"{$_SESSION['success']}\")
+        </script>";
+
+        // Xóa session
+        unset($_SESSION['success']);
+    }
+?>
     <div class="xc-preloader">
         <div class="xc-preloader__image">
             <img src="../public/client/assets/img/preloader/preloader.png" alt="preloader">
@@ -64,26 +88,35 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : null; ?>
                         </div>
                         <div class="xc-header-one__right">
                             <div class="xc-header-one__search d-none d-xl-block">
-                                <form action="#">
-                                    <input type="search" placeholder="Tìm kiếm tại đây...">
-                                    <button type="submit">Tìm kiếm</button>
+                                <form action="?act=search" method="post">
+                                    <input type="search" placeholder="Tìm kiếm tại đây..." name="keyword">
+                                    <button type="submit" name="search">Tìm kiếm</button>
                                 </form>
                             </div>
                             <div class="xc-header-one__btns d-none d-lg-flex">
 
-                                <a href="cart.html" class="xc-header-one__btn">
+                                <a href="?act=cart" class="xc-header-one__btn">
                                     <i class="icon-grocery-store"></i>Giỏ hàng
                                 </a>
+                                <!-- <a href="index.php?act=login" class="xc-header-one__btn">
+                                    <i class="icon-user"></i>Đăng nhập
+                                </a> -->
+                                <!-- <?php if($role==0){ ?>
+                                <a href="index.php?act=admin" class="xc-header-one__btn">
+                                    <i class="icon-user"></i>Admin
+                                </a>
+                                <?php } ?> -->
+
+                                <?php if(!isset($_SESSION['user'])): ?>
                                 <a href="index.php?act=login" class="xc-header-one__btn">
                                     <i class="icon-user"></i>Đăng nhập
                                 </a>
-                                <?php if($role==0){ ?>
-                                <a href="admin/index.php" class="xc-header-one__btn">
-                                    <i class="icon-user"></i>Admin
-                                </a>
-                                <?php } ?>
-
-                                
+                                <?php else: ?>
+                                    <a href="index.php?act=profile" class="xc-header-one__btn">
+                                    <i class="icon-user"></i>
+                                    <span>Xin chào <?=$_SESSION['user']['name']?></span>
+                                    </a>
+                                <?php endif; ?>
                                 <!-- mobile drawer  -->
                                 <div class="xc-header-one__hamburger d-xl-none">
                                     <button type="button" class="xc-offcanvas-btn xc-header-one__btn">
@@ -111,7 +144,7 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : null; ?>
                                 <nav id="mobile-menu">
                                     <ul class="ul-0">
                                         <li class="">
-                                            <a href="index.html">Home</a>
+                                            <a href="?act=index">Home</a>
                                         </li>
                                         <li><a href="about.html">About</a></li>
                                         <li class="has-dropdown"><a href="shop.html">Shop</a>

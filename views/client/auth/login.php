@@ -54,7 +54,7 @@ include "../views/client/layout/header.php";
           border: 1px solid #f5f5f5;
           color: white;
           width: 100%;
-          background-color: rgb(201, 13, 13);
+          background-color: #0075FF;
           border-radius: 6px;
           text-transform: uppercase;
           padding: 10px 10px;
@@ -94,29 +94,62 @@ include "../views/client/layout/header.php";
     </style>
 </head>
 <body>
-    <div id="wrapper">
-      <form action="" id="form-login" action="index.php?act=login">
-          <h1 class="form-heading">Đăng nhập</h1>
-          <div class="form-group">
-            <i class="fa-solid fa-user"></i>
-            <input type="text" class="form-input" placeholder="Tên đăng nhập" name="name">
-          </div>
-          <div class="form-group">
-            <i class="fa-solid fa-key"></i>
-            <input id="password" type="password" class="form-input" placeholder="Mật khẩu" name="password">
-            <span class="eye" id="eye">
-              <i class="fa-solid fa-eye"></i>
-            </span>
-          </div>
-            <span class="forgotPassword"> <a class="forgot_Password" href="index.php?act=forgotPassword">Quên mật khẩu?</a></span>
+<div id="wrapper">
 
-          <input type="submit" value="Đăng nhập" class="form-submit" name="login">
-          <!-- Liên kết đăng ký -->
-          <div class="register-link">
-              <span>Chưa có tài khoản? <a href="index.php?act=register">Đăng ký ngay</a></span>
-          </div>
-      </form>
+<?php
+if (isset($_SESSION['success'])) {
+    echo '<div class="alert alert-success">' . $_SESSION['success'] . '</div>';
+    unset($_SESSION['success']);  
+}
+
+
+if (isset($_SESSION['error'])) {
+    echo '<div class="alert alert-danger">' . $_SESSION['error'] . '</div>';
+    unset($_SESSION['error']);  
+}
+
+
+if (isset($_SESSION['errors'])) {
+    foreach ($_SESSION['errors'] as $key => $error) {
+        echo '<div class="alert alert-warning">' . $error . '</div>';
+    }
+    unset($_SESSION['errors']); 
+}
+?>
+
+
+<form action="" id="form-login" action="index.php?act=login" method="post">
+    <h1 class="form-heading">Đăng nhập</h1>
+
+    <div class="form-group">
+    <i class="fa-solid fa-user"></i>
+    <input type="text" class="form-input" placeholder="Nhập email..." name="email">
+    <?php if (isset($_SESSION['errors']['email'])) : ?>
+        <p class="text-danger"><?= $_SESSION['errors']['email'] ?></p>
+    <?php endif; ?>
     </div>
+
+    <div class="form-group">
+    <i class="fa-solid fa-key"></i>
+    <input id="password" type="password" class="form-input" placeholder="Nhập mật khẩu..." name="password">
+    <span class="eye" id="eye">
+        <i class="fa-solid fa-eye"></i>
+    </span>
+    <?php if (isset($_SESSION['errors']['password'])) : ?>
+        <p class="text-danger"><?= $_SESSION['errors']['password'] ?></p>
+    <?php endif; ?>
+    </div>
+
+    <span class="forgotPassword"> <a class="forgot_Password" href="index.php?act=forgotPassword">Quên mật khẩu?</a></span>
+
+    <input type="submit" value="Đăng nhập" class="form-submit" name="login">
+
+    <div class="register-link">
+        <span>Chưa có tài khoản? <a href="index.php?act=register">Đăng ký ngay</a></span>
+    </div>
+    
+</form>
+</div>
 </body>
 <script>
     document.addEventListener("DOMContentLoaded", function() {

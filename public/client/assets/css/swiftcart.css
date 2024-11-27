@@ -7602,7 +7602,6 @@ div.xc-ads-one__img img {
 .xc-cart-plus,
 .xc-cart-minus {
   width: 45px;
-  height: 44px;
   line-height: 44px;
   display: inline-block;
   text-align: center;
@@ -8018,5 +8017,8 @@ div.xc-ads-one__img img {
   background-color: transparent;
   border: 1px solid #303639;
   color: #929FA5;
+}
+.btn-size:disabled{
+  border: none;
 }
 /*# sourceMappingURL=swiftcart.css.map */
