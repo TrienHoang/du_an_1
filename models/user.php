@@ -31,4 +31,18 @@ class User extends connect
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function updateUsers($name, $address, $email, $phone, $password, $render) {
+        $sql = 'UPDATE users SET name=?,  address=?, email=?, phone=?, password=?, render=? WHERE user_id=?';
+        $stmt = $this->connect()->prepare($sql);
+        return $stmt->execute([$name,  $address, $email, $phone, $password, $render, $_SESSION['user']['user_id']]);
+    }
+    
+
+    public function getUserById($id){
+        $sql= 'SELECT * from users where user_id = ?';
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$id]);
+        return $stmt->fetch();
+    }
 }

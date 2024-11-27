@@ -95,22 +95,22 @@ include "../views/admin/layout/header.php";
                                                 </div>
                                             </div>
 
-                                            <div class="mb-3 row align-items-center">
+                                            <!-- <div class="mb-3 row align-items-center">
                                                 <label
                                                     class="col-lg-2 col-md-3 col-form-label form-label-title">Password</label>
                                                 <div class="col-md-9 col-lg-10">
                                                     <input class="form-control" name="password" value="<?= $infoUser["password"] ?>" type="text" readonly>
                                                 </div>
-                                            </div>
+                                            </div> -->
 
-                                            <div class="mb-3 row align-items-center">
+                                            <!-- <div class="mb-3 row align-items-center">
                                                 <label
                                                     class="col-lg-2 col-md-3 col-form-label form-label-title">Confirm
                                                     Password</label>
                                                 <div class="col-md-9 col-lg-10">
                                                     <input class="form-control" name="confirmPassword" type="text" value="<?= $infoUser["password"] ?>" readonly>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <div class="d-flex justify-content-center">
                                                 <button type="submit" class="me-3 btn btn-outline-primary"><a
                                                         href="index.php?act=user-edit$id=<?= $infoUser['user_id'] ?>">Sửa</a></button>
