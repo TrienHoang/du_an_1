@@ -60,7 +60,7 @@ include "../views/client/layout/header.php";
                                         <td><?= $cart['variant_size_name'] ?></td>
                                         <!-- <td class="product-subtotal"><span class="amount"></span></td> -->
                                         <td class="product-remove">
-                                            <a href="?act=delete-cart&id=<?= $cart["cart_id"] ?>">
+                                            <a href="?act=delete-cart&id=<?= $cart["cart_id"] ?>" onclick="return confirmDeletion(event)">
                                                 <i class="fa fa-times"></i>
                                             </a>
                                         </td>
@@ -85,8 +85,8 @@ include "../views/client/layout/header.php";
                             <div id="size_widget_collapse" class="accordion-collapse collapse show" aria-labelledby="size__widget" data-bs-parent="#shop_size" >
                                 <div class="accordion-body">
                                     <div class="cart-coupon-code">
-                                        <input type="text" placeholder="Coupon Code">
-                                        <button>Apply</button>
+                                        <input type="text" placeholder="Mời nhập mã...">
+                                        <button>Sử dụng</button>
                                     </div>
                                     <div class="cart-subtitle">
                                         <h4>Subtotal</h4>
@@ -114,7 +114,7 @@ include "../views/client/layout/header.php";
                                         <h4><?= number_format($sum * 1000, 0, '.', '.') ?>đ</h4>
                                     </div>
                                     <p>Wetters, as opposed to using Content here, content here, making it look like readable English. Many desktop </p>
-                                    <a class="cart-checkout-btn" href="checkout.html">Checkout</a>
+                                    <a class="cart-checkout-btn" href="?act=checkout">Checkout</a>
                                 </div>
                             </div>
                         </div>
@@ -141,6 +141,14 @@ include "../views/client/layout/header.php";
         </div>
     </div>
 </div>
+<script>
+        function confirmDeletion(event) {
+            if (!confirm('Bạn có chắc muốn xóa?')) {
+                event.preventDefault(); // Ngăn chặn hành động mặc định của liên kết
+                return false; // Ngăn chặn hành động liên kết tiếp tục
+            }
+        }
+    </script>
 <?php
 include "../views/client/layout/footer.php";
 ?>

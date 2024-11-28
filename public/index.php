@@ -11,11 +11,8 @@ require_once '../controllers/client/AuthController.php';
 require_once '../controllers/client/HomeController.php';
 require_once '../controllers/client/ProfileController.php';
 require_once '../controllers/client/CartController.php';
+require_once '../controllers/client/SearchController.php';
 
-
-// require_once '../controllers/client/SearchController.php';
-// require_once '../controllers/client/SearchController.php';
-// require_once '../controllers/client/index.php';
 
 
 $action = isset($_GET['act']) ? $_GET['act'] : 'index';
@@ -29,6 +26,7 @@ $auth = new AuthController();
 $home = new HomeController();
 $profile = new ProfileController();
 $cart = new CartController();
+$searchController = new SearchController();
 
 switch ($action) {
     case 'admin': // Trang chủ admin
@@ -99,11 +97,10 @@ switch ($action) {
         $id = $_GET['id'];
         $userAdmin->detailUser($id);
         break;
-        //=============================================
+//=============================================
     case 'login':
         $auth->handleLogin();
         break;
-
     case 'register':
         $auth->handleRegister();
         break;
@@ -117,10 +114,9 @@ switch ($action) {
         session_unset();
         header('location: index.php');
         break;
-    // case 'search':
-    //     $searchController->handleSearch();
-    //     break;
-        
+    case 'search':
+        $searchController->handleSearch();
+        break;
     case 'forgotPassword':
         include "../views/client/auth/forgotPassword.php";
         break;
@@ -142,5 +138,8 @@ switch ($action) {
         break;
     case 'delete-cart':
         $cart->delete();
+        break;
+    case 'checkout':
+        include "../views/client/checkout/checkout.php";
         break;
 }

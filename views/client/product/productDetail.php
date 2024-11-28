@@ -100,11 +100,11 @@ include "../views/client/layout/header.php";
                             <input type="hidden" name="variant_id" id="variant_id">
                         </div>
                         <div class="product-detail-variant">
-                            <div class="product-detail-variant-color ">
+                            <div class="product-detail-variant-color">
                                 <h5>Màu: </h5>
                                 <div class="row">
                                     <?php foreach ($productDetail["variants"] as $key => $variant): ?>
-                                        <button type="button" class="btn btn-color col-2 m-1" data-color="<?= $variant["variant_color_code"] ?>" ><span class="  rounded-5 p-2 pe-4" style=" background-color: <?= $variant["variant_color_code"] ?>;"></span></button>
+                                        <button type="button" class="btn btn-color col-2 m-1" data-color="<?= $variant["variant_color_code"] ?>"><span class="  rounded-5 p-2 pe-4" style=" background-color: <?= $variant["variant_color_code"] ?>;"></span></button>
                                     <?php endforeach ?>
                                 </div>
                             </div>
@@ -113,7 +113,7 @@ include "../views/client/layout/header.php";
                                 <h5>Dung lượng: </h5>
                                 <div class="row">
                                     <?php foreach ($productDetail["variants"] as $key => $variant): ?>
-                                        <button type="button" class="btn btn-size col-2 m-1" data-size="<?= $variant["variant_size_name"] ?>" ><?= $variant["variant_size_name"] ?></button>
+                                        <button type="button" class="btn btn-size col-2 m-1" style=" border: none;" data-size="<?= $variant["variant_size_name"] ?>"><?= $variant["variant_size_name"] ?></button>
                                     <?php endforeach ?>
                                 </div>
                             </div>
@@ -132,9 +132,6 @@ include "../views/client/layout/header.php";
                         </div>
 
                         <div class="product__details-action d-flex flex-wrap align-items-center">
-                            <!-- <a href="" >
-                                Thêm vào giỏ hàng
-                            </a> -->
                             <button type="submit" class="product-add-cart-btn swiftcart-btn" name="add_to_cart">
                                 Thêm vào giỏ hàng
                             </button>
@@ -217,7 +214,7 @@ include "../views/client/layout/header.php";
                             <div class="product__details-additional">
                                 <div class="product__details-additional-inner">
                                     <table>
-                                        <tbody>
+                                        <tbody>s
                                             <tr>
                                                 <th scope="row">Brand:</th>
                                                 <td>Apple</td>
@@ -466,144 +463,43 @@ include "../views/client/layout/header.php";
 
 <div class="xc-related-product pb-80">
     <div class="container">
-        <h3 class="xc-section-title mb-30">Related products</h3>
+        <h3 class="xc-section-title mb-30">Sản phẩm liên quan</h3>
         <div class="row gutter-y-30">
-            <div class="col-xl-3 col-md-6">
-                <div class="xc-product-eight__item">
-                    <div class="xc-product-eight__img">
-                        <img src="assets/img/products/product-fas-1.png" alt="fas">
-                        <span class="xc-product-eight__offer">30% off</span>
-                        <div class="xc-product-eight__icons">
-                            <button class="xc-product-eight__action">
-                                <i class="icon-love"></i>
-                                <span class="xc-product-eight__tooltip">Add To Wishlist</span>
-                            </button>
-                            <button class="xc-product-eight__action">
+            <?php foreach ($get4product as $key => $product): ?>
+                <div class="col-xl-3 col-md-6">
+                    <div class="xc-product-eight__item">
+                        <div class="xc-product-eight__img">
+                            <img src="./images/product/<?= $product['image'] ?>" style="width: 100%; height: 100%; object-fit: cover;" alt="fas">
+                            <span class="xc-product-eight__offer">30% off</span>
+                            <div class="xc-product-eight__icons">
+                                <a href="?act=product_detail&slug=<?= $product['slug'] ?>" class="xc-product-eight__action">
+                                    <i class="icon-eye"></i>
+                                    <span class="xc-product-eight__tooltip">Xem chi tiết</span>
+                                </a>
+                                <!-- <button class="xc-product-eight__action">
                                 <i class="icon-magnifying-glass"></i>
                                 <span class="xc-product-eight__tooltip">Quick view</span>
                             </button>
                             <button class="xc-product-eight__action">
                                 <i class="icon-shopping-cart"></i>
                                 <span class="xc-product-eight__tooltip">Add To Cart</span>
-                            </button>
+                            </button> -->
+                            </div>
+                        </div>
+                        <div class="xc-product-eight__content">
+                            <div class="xc-product-eight__ratting">
+                                <i class="icon-star"></i>
+                                <i class="icon-star"></i>
+                                <i class="icon-star"></i>
+                                <i class="icon-star"></i>
+                                <i class="icon-star"></i>
+                                (25 Reviews)
+                            </div>
+                            <h3 class="xc-product-eight__title"><a href="product-details.html"><?=$product['name'] ?></a></h3>
+                            <h5 class="xc-product-eight__price"><del class="me-1"><?= number_format($product['sale_price'] * 1000, 0, '.', '.') ?>đ</del><?= number_format($product['price'] * 1000, 0, '.', '.') ?>đ</h5>
                         </div>
                     </div>
-                    <div class="xc-product-eight__content">
-                        <div class="xc-product-eight__ratting">
-                            <i class="icon-star"></i>
-                            <i class="icon-star"></i>
-                            <i class="icon-star"></i>
-                            <i class="icon-star"></i>
-                            <i class="icon-star"></i>
-                            (25 Reviews)
-                        </div>
-                        <h3 class="xc-product-eight__title"><a href="product-details.html">women Billie Eilish n21</a></h3>
-                        <h5 class="xc-product-eight__price"><del>$489</del> $289</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="xc-product-eight__item">
-                    <div class="xc-product-eight__img">
-                        <img src="assets/img/products/product-fas-2.png" alt="fas">
-                        <span class="xc-product-eight__offer">30% off</span>
-                        <div class="xc-product-eight__icons">
-                            <button class="xc-product-eight__action">
-                                <i class="icon-love"></i>
-                                <span class="xc-product-eight__tooltip">Add To Wishlist</span>
-                            </button>
-                            <button class="xc-product-eight__action">
-                                <i class="icon-magnifying-glass"></i>
-                                <span class="xc-product-eight__tooltip">Quick view</span>
-                            </button>
-                            <button class="xc-product-eight__action">
-                                <i class="icon-shopping-cart"></i>
-                                <span class="xc-product-eight__tooltip">Add To Cart</span>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="xc-product-eight__content">
-                        <div class="xc-product-eight__ratting">
-                            <i class="icon-star"></i>
-                            <i class="icon-star"></i>
-                            <i class="icon-star"></i>
-                            <i class="icon-star"></i>
-                            <i class="icon-star"></i>
-                            (25 Reviews)
-                        </div>
-                        <h3 class="xc-product-eight__title"><a href="product-details.html">women Billie Eilish n21</a></h3>
-                        <h5 class="xc-product-eight__price"><del>$489</del> $289</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="xc-product-eight__item">
-                    <div class="xc-product-eight__img">
-                        <img src="assets/img/products/product-fas-3.png" alt="fas">
-                        <span class="xc-product-eight__offer">30% off</span>
-                        <div class="xc-product-eight__icons">
-                            <button class="xc-product-eight__action">
-                                <i class="icon-love"></i>
-                                <span class="xc-product-eight__tooltip">Add To Wishlist</span>
-                            </button>
-                            <button class="xc-product-eight__action">
-                                <i class="icon-magnifying-glass"></i>
-                                <span class="xc-product-eight__tooltip">Quick view</span>
-                            </button>
-                            <button class="xc-product-eight__action">
-                                <i class="icon-shopping-cart"></i>
-                                <span class="xc-product-eight__tooltip">Add To Cart</span>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="xc-product-eight__content">
-                        <div class="xc-product-eight__ratting">
-                            <i class="icon-star"></i>
-                            <i class="icon-star"></i>
-                            <i class="icon-star"></i>
-                            <i class="icon-star"></i>
-                            <i class="icon-star"></i>
-                            (25 Reviews)
-                        </div>
-                        <h3 class="xc-product-eight__title"><a href="product-details.html">women Billie Eilish n21</a></h3>
-                        <h5 class="xc-product-eight__price"><del>$489</del> $289</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="xc-product-eight__item">
-                    <div class="xc-product-eight__img">
-                        <img src="assets/img/products/product-fas-4.png" alt="fas">
-                        <span class="xc-product-eight__offer">30% off</span>
-                        <div class="xc-product-eight__icons">
-                            <button class="xc-product-eight__action">
-                                <i class="icon-love"></i>
-                                <span class="xc-product-eight__tooltip">Add To Wishlist</span>
-                            </button>
-                            <button class="xc-product-eight__action">
-                                <i class="icon-magnifying-glass"></i>
-                                <span class="xc-product-eight__tooltip">Quick view</span>
-                            </button>
-                            <button class="xc-product-eight__action">
-                                <i class="icon-shopping-cart"></i>
-                                <span class="xc-product-eight__tooltip">Add To Cart</span>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="xc-product-eight__content">
-                        <div class="xc-product-eight__ratting">
-                            <i class="icon-star"></i>
-                            <i class="icon-star"></i>
-                            <i class="icon-star"></i>
-                            <i class="icon-star"></i>
-                            <i class="icon-star"></i>
-                            (25 Reviews)
-                        </div>
-                        <h3 class="xc-product-eight__title"><a href="product-details.html">women Billie Eilish n21</a></h3>
-                        <h5 class="xc-product-eight__price"><del>$489</del> $289</h5>
-                    </div>
-                </div>
-            </div>
+                </div> <?php endforeach ?>
         </div>
     </div>
 </div>
@@ -615,7 +511,7 @@ include "../views/client/layout/header.php";
 
         // Lấy dữ liệu từ php sang js
         const variants = <?= json_encode($productDetail['variants']); ?>;
-    console.log(variants);
+        console.log(variants);
         // Lấy các nút màu và kích thước
         const colorButtons = document.querySelectorAll('.btn-color');
         const sizeButtons = document.querySelectorAll('.btn-size');
