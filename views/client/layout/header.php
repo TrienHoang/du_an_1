@@ -84,7 +84,7 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : null; ?>
                 <div class="container">
                     <div class="xc-header-one__wrapper">
                         <div class="xc-header-one__logo">
-                            <a href="index.php?act=index"><img src="../public/client/assets/img/logo/white-logo.png" alt="logo" width="158"></a>
+                            <a href="index.php?act=index"><h3 class="text-light">TechFusion</h3></a>
                         </div>
                         <div class="xc-header-one__right">
                             <div class="xc-header-one__search d-none d-xl-block">
@@ -150,9 +150,9 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : null; ?>
                                         <li class="has-dropdown"><a href="shop.html">Shop</a>
                                             <ul class="submenu">
                                                 <li><a href="shop.html">Shop</a>
-                                                <li><a href="product-details.html">Product Details</a></li>
-                                                <li><a href="cart.html">Cart</a></li>
-                                                <li><a href="checkout.html">Checkout</a></li>
+                                                <li><a href="?act=product_detail">Product Details</a></li>
+                                                <li><a href="?act=cart">Cart</a></li>
+                                                <li><a href="#">Checkout</a></li>
                                             </ul>
                                         </li>
                                         <li class="has-dropdown">

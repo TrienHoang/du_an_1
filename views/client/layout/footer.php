@@ -7,7 +7,7 @@
                             <div class="col-md-6 col-lg-6 col-xl-3">
                                 <div class="xc-footer-one__widget xc-widget-col-1">
                                     <div class="xc-footer-one__logo">
-                                        <a href="index.html"><img src="../public/client/assets/img/logo/white-logo.png" alt="swiftcart" width="180"></a>
+                                        <a href="index.html"><h3 class="text-light">TechFusion</h3></a>
                                     </div>
                                     <p class="xc-footer-one__about">Nam Từ Liêm , Hà nội</p>
                                     <div class="xc-footer-one__cta">

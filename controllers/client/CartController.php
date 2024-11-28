@@ -6,6 +6,11 @@ class CartController extends Cart
 
     public function index()
     {
+        if (!isset($_SESSION['user']['user_id'])) {
+            $_SESSION['error'] = 'Vui lòng đăng nhập hoặc đăng kí';
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            exit;
+        }
         $carts = $this->getAllCart();
             // echo "<pre>";
             // var_dump($carts);
@@ -44,7 +49,6 @@ class CartController extends Cart
     public function addToCartByNow()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["add_to_cart"])) {
-
             if (empty($_POST['variant_id']) || empty($_POST['quantity'])) {
                 $_SESSION['error'] = 'Vui lòng chọn sản phẩm, màu sắc và kích thước!';
                 header('Location: ' . $_SERVER['HTTP_REFERER']);
