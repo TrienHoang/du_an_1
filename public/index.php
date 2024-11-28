@@ -19,6 +19,7 @@ require_once '../controllers/client/CartController.php';
 
 
 $action = isset($_GET['act']) ? $_GET['act'] : 'index';
+$act = isset($_GET['act']) ? $_GET['act'] : 'home'; 
 $categoryAdmin = new CategoryAdminController();
 $userAdmin = new UserAdminController();
 $productAdmin = new ProductAdminController();
@@ -117,12 +118,9 @@ switch ($action) {
         session_unset();
         header('location: index.php');
         break;
-    // case 'search':
-    //     $searchController->handleSearch();
-    //     break;
         
     case 'forgotPassword':
-        include "../views/client/auth/forgotPassword.php";
+        $home->forgotPassword();
         break;
         //==============================================================
     case 'index':
@@ -130,6 +128,12 @@ switch ($action) {
         break;
     case 'product_detail':
         $home->getProductDetail();
+        break;
+    case 'product-category':
+        $home->productCategory();
+        break;
+    case 'searchresult':
+        $home->searchresult();  
         break;
     case 'cart':
         $cart->index();

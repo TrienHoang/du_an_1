@@ -44,6 +44,13 @@
             return $stmt->execute([$name, $image, $status, $description, $id]);
         }
 
+        public function getCategoryById($id) {
+            $sql = "SELECT * FROM categories WHERE category_id = :id";
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
         
 
         

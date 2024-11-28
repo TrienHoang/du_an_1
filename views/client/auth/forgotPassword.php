@@ -66,23 +66,25 @@ include "../views/client/layout/header.php";
     </style>
 </head>
 <body>
-    <div id="wrapper">
-      <form id="form-forgotPassword" action="index.php?act=forgotPassword" method="post">
-          <h1 class="form-heading">Quên mật khẩu</h1>
+<div id="wrapper">
+  <form id="form-forgotPassword" action="index.php?act=forgotPassword" method="post">
+      <h1 class="form-heading">Quên mật khẩu</h1>
 
-          <div class="form-group">
-            <i class="fa-solid fa-envelope"></i>
-            <input type="email" class="form-input" placeholder="Nhập email" required name="email">
-          </div>
+      <div class="form-group">
+        <i class="fa-solid fa-envelope"></i>
+        <input type="email" class="form-input" placeholder="Nhập email" required name="email">
+      </div>
 
-          <input type="submit" value="Gửi" class="form-submit" name="gui">
-      </form>
-      <?php
-        if(isset($thongbao)&&($thongbao!="")){
-            echo $thongbao;
-        }
-      ?>
-    </div>
+      <input type="submit" value="Gửi" class="form-submit" name="gui">
+  </form>
+
+  <?php
+    if (isset($thongbao) && $thongbao != "") {
+        echo "<p>" . $thongbao . "</p>";
+    }
+  ?>
+</div>
+
 </body>
 <script>
     document.addEventListener("DOMContentLoaded", function() {

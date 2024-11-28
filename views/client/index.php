@@ -179,16 +179,18 @@ include "../views/client/layout/header.php";
                 <div class="row">
                     <div class="col-xl-3 col-xxl-2 d-none d-xl-block">
                         <div class="xc-banner-one__cat" style="width: 350px;">
-                            <?php foreach($category as $cate) : ?>
-                            <ul style="padding: 5px 0px;">
-                                <li>
-                                    <a href="#">
-                                        <img style="width: 55px; margin-right: 20px;" src="./images/category/<?=$cate['image']?>" alt="">
-                                        <?=$cate['name'] ?>
-                                    </a>
-                                </li>
-                            </ul>
-                            <?php endforeach ;?>
+                        <?php foreach($category as $cate) : ?>
+    <ul style="padding: 5px 0px;">
+        <li>
+            <a href="index.php?act=product-category&id=<?= $cate['category_id'] ?>"> <!-- Sử dụng category_id thay vì id -->
+                <img style="width: 55px; margin-right: 20px;" src="./images/category/<?= $cate['image'] ?>" alt="">
+                <?= $cate['name'] ?>
+            </a>
+        </li>
+    </ul>
+<?php endforeach ;?>
+
+
                         </div>
                     </div>
                     <div class="col-12 col-xl-9 col-xxl-9" style="padding-left: 80px;">

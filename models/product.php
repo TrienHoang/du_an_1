@@ -263,7 +263,49 @@ class Product extends connect
     }
     
     
+    public function getProductsByCategoryId($categoryId) {
+        try {
+            $sql = "SELECT p.*, c.name as category_name 
+                    FROM products p 
+                    LEFT JOIN categories c ON p.category_id = c.category_id 
+                    WHERE p.category_id = :category_id";
+            $stmt = $this->connect()->prepare($sql);
+    
+            $stmt->bindParam(':category_id', $categoryId);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return [];
+        }
+    }
+
+
+    public function searchProducts($keyword) {
+        try {
+            $sql = "SELECT p.*, c.name as category_name
+                    FROM products p
+                    JOIN categories c ON p.category_id = c.category_id
+                    WHERE p.name LIKE :keyword OR c.name LIKE :keyword";
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->bindValue(':keyword', '%' . $keyword . '%');
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return [];
+        }
+    }
+
+    
+    
+}
+    
+    
     
 
-}
+    
+    
+
+
     

@@ -88,10 +88,15 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : null; ?>
                         </div>
                         <div class="xc-header-one__right">
                             <div class="xc-header-one__search d-none d-xl-block">
-                                <form action="?act=search" method="post">
-                                    <input type="search" placeholder="Tìm kiếm tại đây..." name="keyword">
-                                    <button type="submit" name="search">Tìm kiếm</button>
-                                </form>
+                            <form action="index.php?act=searchresult" method="post">
+    <input type="search" placeholder="Tìm kiếm tại đây..." name="keyword" required>
+    <button type="submit" name="search">Tìm kiếm</button>
+</form>
+
+
+
+
+
                             </div>
                             <div class="xc-header-one__btns d-none d-lg-flex">
 

@@ -31,22 +31,22 @@ class UserClient extends connect {
         }
     }
 
-    // public function search($name){
-    //     try {
-    //         $sql = 'SELECT * FROM products WHERE name = ?';
-    //         $stmt = $this->connect()->prepare($sql);
-    //         $stmt->execute([$name]);
-    //         $product = $stmt->fetch(PDO::FETCH_ASSOC);
+    private $db;
 
-    //         if($product === $product['name']){
-    //             return $product;
-    //         }
-    //         return false;
-    //     } catch (PDOException $e) {
-    //         error_log("Error in login: " . $e->getMessage());
-    //         return false;
-    //     }
-    // }
+    public function __construct()
+    {
+        $connObj = new connect();
+        $this->db = $connObj->connect();
+    }
+
+    public function getUserByEmail($email)
+    {
+        $sql = "SELECT * FROM users WHERE email = :email";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
 
 ?>
