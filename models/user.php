@@ -32,10 +32,10 @@ class User extends connect
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function updateUsers($name, $address, $email, $phone, $password, $render) {
+    public function updateUsers( $name, $address, $email, $phone, $password, $render) {
         $sql = 'UPDATE users SET name=?,  address=?, email=?, phone=?, password=?, render=? WHERE user_id=?';
         $stmt = $this->connect()->prepare($sql);
-        return $stmt->execute([$name,  $address, $email, $phone, $password, $render, $_SESSION['user']['user_id']]);
+        return $stmt->execute([ $name,  $address, $email, $phone, $password, $render, $_SESSION['user']['user_id']]);
     }
     
 

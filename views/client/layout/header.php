@@ -89,9 +89,9 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : null; ?>
                         <div class="xc-header-one__right">
                             <div class="xc-header-one__search d-none d-xl-block">
                             <form action="index.php?act=searchresult" method="post">
-    <input type="search" placeholder="Tìm kiếm tại đây..." name="keyword" required>
-    <button type="submit" name="search">Tìm kiếm</button>
-</form>
+                                <input type="search" placeholder="Tìm kiếm tại đây..." name="keyword" required>
+                                <button type="submit" name="search">Tìm kiếm</button>
+                            </form>
 
 
 
@@ -152,15 +152,15 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : null; ?>
                                             <a href="?act=index">Home</a>
                                         </li>
                                         <li><a href="about.html">About</a></li>
-                                        <li class="has-dropdown"><a href="shop.html">Shop</a>
+                                        <li class="has-dropdown"><a href="">Shop</a>
                                             <ul class="submenu">
-                                                <li><a href="shop.html">Shop</a>
-                                                <li><a href="product-details.html">Product Details</a></li>
+                                                <!-- <li><a href="shop.html">Shop</a> -->
+                                                <li><a href="index.php?act=all-products"> All Product</a></li>
                                                 <li><a href="cart.html">Cart</a></li>
                                                 <li><a href="checkout.html">Checkout</a></li>
                                             </ul>
                                         </li>
-                                        <li class="has-dropdown">
+                                        <!-- <li class="has-dropdown">
                                             <a href="blog-list.html">Blog</a>
                                             <ul class="submenu">
                                                 <li>
@@ -177,7 +177,7 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : null; ?>
                                                 <li><a href="blog-details.html">Blog Details</a>
                                                 </li>
                                             </ul>
-                                        </li>
+                                        </li> -->
                                         <li>
                                             <a href="contact.html">Contact</a>
                                         </li>

@@ -14,6 +14,16 @@ class UserClient extends connect {
         }
     }
 
+    public function checkEmail($email)
+    {
+        $sql = "SELECT COUNT(*) as count FROM users WHERE email = ?";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$email]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['count'] > 0;
+    }
+
+
     public function login($email, $password) {
         try {
             $sql = 'SELECT * FROM users WHERE email = ?';

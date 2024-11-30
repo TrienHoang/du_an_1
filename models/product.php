@@ -297,6 +297,16 @@ class Product extends connect
         }
     }
 
+    public function allProduct() {
+        $sql = "SELECT p.*, c.name AS category_name
+                FROM products p
+                LEFT JOIN categories c ON p.category_id = c.category_id"; 
+    
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
     
     
 }

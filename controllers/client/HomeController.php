@@ -84,6 +84,11 @@ public function __construct()
         include "../views/client/auth/forgotPassword.php";
     }
     
+    public function allProducts(){
+
+        $products = $this->product->allProduct();
+        include '../views/client/product/allProducts.php';
+    }
     
 
     
