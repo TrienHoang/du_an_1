@@ -266,7 +266,7 @@ include "../views/client/layout/header.php";
                                 <div class="xc-product-two__btn">
                                     <a href="?act=product_detail&slug=<?= $pro['product_slug'] ?>"><i class="icon-eye"></i></a>
 
-                                    <a href="cart.html"><i class="icon-grocery-store"></i></a>
+                                    <!-- <a href="cart.html"><i class="icon-grocery-store"></i></a> -->
                                 </div>
 
                                 <div>

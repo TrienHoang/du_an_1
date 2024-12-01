@@ -22,10 +22,13 @@ include "../views/client/layout/header.php";
 
 <div class="xc-cart-page pt-80 pb-80">
     <div class="container">
+        <div class="col-md-6 mb-3">
+            <a class="btn btn-primary" href="?act=history-order">Lịch sử đặt hàng</a>
+        </div>
         <div class="row gutter-y-30 gx-5">
             <div class="col-lg-8 col-xl-9">
                 <form action="?act=update-cart" method="post">
-                    <div class="xc-cart-page__table">  
+                    <div class="xc-cart-page__table">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -50,7 +53,7 @@ include "../views/client/layout/header.php";
                                                 <span class="xc-cart-minus sub">
                                                     <i class="fas fa-minus"></i>
                                                 </span>
-                                                <input class="xc-cart-input" type="text" name="quantity[<?=$cart['cart_id']?>]" value="<?= $cart['quantity'] ?>">
+                                                <input class="xc-cart-input" type="text" name="quantity[<?= $cart['cart_id'] ?>]" value="<?= $cart['quantity'] ?>">
                                                 <span class="xc-cart-plus add">
                                                     <i class="fas fa-plus"></i>
                                                 </span>
@@ -82,36 +85,25 @@ include "../views/client/layout/header.php";
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#size_widget_collapse" aria-expanded="true" aria-controls="size_widget_collapse">Shopping Cart
                                 </button>
                             </h2>
-                            <div id="size_widget_collapse" class="accordion-collapse collapse show" aria-labelledby="size__widget" data-bs-parent="#shop_size" >
+                            <div id="size_widget_collapse" class="accordion-collapse collapse show" aria-labelledby="size__widget" data-bs-parent="#shop_size">
                                 <div class="accordion-body">
-                                    <div class="cart-coupon-code">
-                                        <input type="text" placeholder="Mời nhập mã...">
-                                        <button>Sử dụng</button>
+                                    <form action="?act=update-cart" method="post">
+                                        <div class="cart-coupon-code">
+                                            <input type="text" placeholder="Nhập mã" name="coupon_code">
+                                            <button type="submit" name="apply_coupon">Sử dụng</button>
+                                        </div>
+                                    </form>
+                                    <div class="cart-subtitle">
+                                        <h4>Total</h4>
+                                        <h4><?= number_format($sum * 1000, 0, '.', '.') ?>đ</h4>
                                     </div>
                                     <div class="cart-subtitle">
-                                        <h4>Subtotal</h4>
-                                        <h4><?= number_format($sum * 1000, 0, '.', '.') ?>đ</h4>
+                                        <h4>Giảm giá</h4>
+                                        <h4>- <?= number_format(($_SESSION['totalCoupon'] ?? 0) * 1000, 0, '.', '.') ?>đ</h4>
                                     </div>
-                                    <!-- <div class="cart-checkout">
-                                                    <h4>Shipping</h4>
-                                                    <div class="shop__widget-list">
-                                                        <div class="shop__widget-list-item-2">
-                                                            <input type="radio" name="pay" id="c-rate">
-                                                            <label for="c-rate">Flat rate</label>
-                                                        </div>
-                                                        <div class="shop__widget-list-item-2 has-orange">
-                                                            <input type="radio" name="pay" id="c-Free">
-                                                            <label for="c-Free">Free shipping</label>
-                                                        </div>
-                                                        <div class="shop__widget-list-item-2 has-green">
-                                                            <input type="radio" name="pay" id="c-pickup">
-                                                            <label for="c-pickup">Local pickup</label>
-                                                        </div>
-                                                    </div>
-                                                </div> -->
                                     <div class="cart-totails">
                                         <h4>Subtotal</h4>
-                                        <h4><?= number_format($sum * 1000, 0, '.', '.') ?>đ</h4>
+                                        <h4><?= number_format(($sum - ($_SESSION['totalCoupon'] ?? 0 ))* 1000, 0, '.', '.') ?>đ</h4>
                                     </div>
                                     <p>Wetters, as opposed to using Content here, content here, making it look like readable English. Many desktop </p>
                                     <a class="cart-checkout-btn" href="?act=checkout">Checkout</a>
@@ -142,13 +134,13 @@ include "../views/client/layout/header.php";
     </div>
 </div>
 <script>
-        function confirmDeletion(event) {
-            if (!confirm('Bạn có chắc muốn xóa?')) {
-                event.preventDefault(); // Ngăn chặn hành động mặc định của liên kết
-                return false; // Ngăn chặn hành động liên kết tiếp tục
-            }
+    function confirmDeletion(event) {
+        if (!confirm('Bạn có chắc muốn xóa?')) {
+            event.preventDefault(); // Ngăn chặn hành động mặc định của liên kết
+            return false; // Ngăn chặn hành động liên kết tiếp tục
         }
-    </script>
+    }
+</script>
 <?php
 include "../views/client/layout/footer.php";
 ?>
