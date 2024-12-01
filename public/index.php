@@ -12,6 +12,7 @@ require_once '../controllers/client/HomeController.php';
 require_once '../controllers/client/ProfileController.php';
 require_once '../controllers/client/CartController.php';
 require_once '../controllers/client/SearchController.php';
+require_once '../controllers/client/OrderController.php';
 
 
 
@@ -27,6 +28,7 @@ $home = new HomeController();
 $profile = new ProfileController();
 $cart = new CartController();
 $searchController = new SearchController();
+$order = new OrderController();
 
 switch ($action) {
     case 'admin': // Trang chủ admin
@@ -140,6 +142,12 @@ switch ($action) {
         $cart->delete();
         break;
     case 'checkout':
-        include "../views/client/checkout/checkout.php";
+        $order->index();
+        break;
+    case 'order':
+        $order->checkout();
+        break;
+    case 'history-order':
+        $cart->getHistoryOder();
         break;
 }
