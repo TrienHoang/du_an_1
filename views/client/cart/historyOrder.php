@@ -2,7 +2,7 @@
 include "../views/client/layout/header.php";
 ?>
 <div class="conainer">
-    <div class="col-8 m-4 ">
+    <div class="col-10 m-4 ">
         <h4 class="m-4">Lịch sử mua hàng</h4>
         <div class="table d-flex justify-content-center">
         <table class="table border-4 ">
@@ -42,9 +42,8 @@ include "../views/client/layout/header.php";
                     </td>
                     <td><?= number_format($order['order_total'] * 1000, 0, '.', '.') ?>đ</td>
                     <td><?= $order['order_create_at'] ?></td>
-
                     <td>
-                        <button class="btn btn-danger" <?=($order['order_status'] == 'pending' || $order['order_status'] == 'confirmed') ?'disable': "" ?>>Hủy hơn hàng</button>
+                         <button class="btn btn-danger" <?=($order['order_status'] == 'confirmed' ||$order['order_status'] == 'shiping' || $order['order_status'] == 'delivered' ) ? 'disabled': "" ?>>Hủy hơn hàng</button>
                     </td>
                 </tr>
                 <?php endforeach; ?>
