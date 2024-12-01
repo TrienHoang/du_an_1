@@ -37,8 +37,9 @@ public function __construct()
         $productDetail = reset($productDetail);
         $product = $this->product->listProduct();
 
+        $get4product = $this->product->get4product($productDetail['category_id']);
         // echo '<pre>';
-        // print_r($productDetail);
+        // print_r($get4product);
         // echo '<pre>';
         include '../views/client/product/productDetail.php';
     }

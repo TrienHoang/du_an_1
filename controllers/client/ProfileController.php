@@ -1,12 +1,10 @@
 <?php
 require_once '../models/user.php';
+
+
 class ProfileController extends User{
     public function updateProfile(){
         if($_SERVER['REQUEST_METHOD']== 'POST' && isset($_POST['update-profile'])){
-            // echo '123';
-            // echo '<pre>';
-            // print_r($_POST);
-            // echo '<pre>';
             $errors = [];
 
             if (empty($_POST['name'])) {
