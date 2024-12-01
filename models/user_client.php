@@ -4,13 +4,26 @@ require_once '../connect/connect.php';
 class UserClient extends connect
 {
 
-    public function register($name, $email, $password)
-    {
-        // $hash_password = password_hash($password, PASSWORD_DEFAULT);
-        $sql = 'INSERT INTO users(name, email, password, role_id) VALUES(?, ?, ?, 2)';
-        $stmt = $this->connect()->prepare($sql);
-        return $stmt->execute([$name, $email, $password]);
+    public function register($name, $email, $password) {
+        try {
+            $sql = 'INSERT INTO users(name, email, password, role_id) VALUES(?, ?, ?, 1)';
+            $stmt = $this->connect()->prepare($sql);
+            return $stmt->execute([$name, $email, $password]);
+        } catch (PDOException $e) {
+            error_log("Error in register: " . $e->getMessage());
+            return false;
+        }
     }
+
+    public function checkEmail($email)
+    {
+        $sql = "SELECT COUNT(*) as count FROM users WHERE email = ?";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$email]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['count'] > 0;
+    }
+
 
     public function login($email, $password)
     {

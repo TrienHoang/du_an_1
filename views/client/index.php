@@ -189,27 +189,27 @@ include "../views/client/layout/header.php";
 
     <!-- banner one start -->
 
-        <div class="xc-banner-one pt-20 pb-40">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-3 col-xxl-2 d-none d-xl-block">
-                        <div class="xc-banner-one__cat" style="width: 350px;">
+        <div class="xc-banner-one pt-20 pb-40" style="margin-left: 35px;">
+            <div class="container" >
+                <div class="row" >
+                    <div class="col-xl-3 col-xxl-2 d-none d-xl-block" style="margin-left: 10px;">
+                        <div class="xc-banner-one__cat" style="width: 400px;">
                         <?php foreach($category as $cate) : ?>
-    <ul style="padding: 5px 0px;">
-        <li>
-            <a href="index.php?act=product-category&id=<?= $cate['category_id'] ?>"> <!-- Sử dụng category_id thay vì id -->
-                <img style="width: 55px; margin-right: 20px;" src="./images/category/<?= $cate['image'] ?>" alt="">
-                <?= $cate['name'] ?>
-            </a>
-        </li>
-    </ul>
-<?php endforeach ;?>
+                            <ul style="padding: 5px 0px;">
+                                <li>
+                                    <a href="index.php?act=product-category&id=<?= $cate['category_id'] ?>"> 
+                                        <img style="width: 55px; margin-right: 20px;" src="./images/category/<?= $cate['image'] ?>" alt="">
+                                        <?= $cate['name'] ?>
+                                    </a>
+                                </li>
+                            </ul>
+                        <?php endforeach ;?>
 
 
                         </div>
                     </div>
-                    <div class="col-12 col-xl-9 col-xxl-9" style="padding-left: 80px;">
-                        <div id="carouselExample" class="carousel slide">
+                    <div class="col-12 col-xl-9 col-xxl-9" style="margin-left: 80px;">
+                        <div id="carouselExample" class="carousel slide" style="margin-left: 68px;">
                             <div class="carousel-inner">
                             <section class="slider">
                                 <div class="container">
@@ -529,48 +529,58 @@ include "../views/client/layout/header.php";
     var img = [];
     var index = 0;
 
-    // Load ảnh
     function loadanh() {
         for (var i = 0; i < 6; i++) {
-            img[i] = new Image();
-            img[i].src = "./../public/client/assets//img/banner/" + i + ".webp";
+        img[i] = new Image();
+        img[i].src = "./../public/client/assets/img/banner/" + i + ".webp";
+            }
         }
-    }
     loadanh();
 
-    // Nút next
+    function showImage() {
+        var anh = document.getElementById("anh");
+        anh.src = img[index].src;
+        updateActiveItem();
+    }
+
     function next() {
         index++;
         if (index >= img.length) {
             index = 0;
         }
-
-        var anh = document.getElementById("anh");
-        anh.src = img[index].src;
-        updateActiveItem();
+        showImage();
     }
 
-    // Nút pre
     function pre() {
         index--;
         if (index < 0) {
             index = img.length - 1;
         }
-        var anh = document.getElementById("anh");
-        anh.src = img[index].src;
-        updateActiveItem();
+        showImage();
     }
 
-
     function updateActiveItem() {
-        var items = document.querySelectorAll('.slider-content-bottom li');
+    var items = document.querySelectorAll('.slider-content-bottom li');
         items.forEach(function(item, i) {
-            item.classList.remove('active');
+        item.classList.remove('active');
             if (i === index) {
                 item.classList.add('active');
             }
         });
     }
+
+    function autoSlide() {
+        setInterval(function() {
+            next();
+        }, 2000); 
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        showImage();
+        autoSlide(); 
+    });
+
+
 </script>
 
 </html>

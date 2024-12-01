@@ -86,29 +86,7 @@ include "../views/client/layout/header.php";
 </div>
 
 </body>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const togglePasswordVisibility = (eyeId, passwordId) => {
-            const eyeIcon = document.getElementById(eyeId);
-            const passwordField = document.getElementById(passwordId);
 
-            if (eyeIcon && passwordField) {
-                eyeIcon.addEventListener("click", function() {
-                    const icon = eyeIcon.querySelector("i");
-                    icon.classList.toggle("fa-eye");
-                    icon.classList.toggle("fa-eye-slash");
-
-                    passwordField.type = passwordField.type === "password" ? "text" : "password";
-                });
-            } else {
-                console.error(`Phần tử '#${eyeId}' hoặc '#${passwordId}' không tồn tại trong DOM.`);
-            }
-        };
-
-        togglePasswordVisibility("eye1", "password1");
-        togglePasswordVisibility("eye2", "password2");
-    });
-</script>
 </html>
 
 

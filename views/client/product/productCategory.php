@@ -249,54 +249,7 @@ include "../views/client/layout/header.php";
         </div>
         </body>
 
-        <script>
-    var img = [];
-var index = 0;
-
-// Load ảnh
-function loadanh() {
-    for (var i = 0; i < 6; i++) {
-        img[i] = new Image();
-        img[i].src = "./../public/client/assets//img/banner/" + i + ".webp";
-    }
-}
-loadanh();
-
-// Nút next
-function next() {
-    index++;
-    if (index >= img.length) {
-        index = 0;
-    }
-
-    var anh = document.getElementById("anh");
-    anh.src = img[index].src;  
-    updateActiveItem(); 
-}
-
-// Nút pre
-function pre() {
-    index--;
-    if (index < 0) {
-        index = img.length - 1;  
-    }
-    var anh = document.getElementById("anh");
-    anh.src = img[index].src;
-    updateActiveItem();  
-}
-
-
-function updateActiveItem() {
-    var items = document.querySelectorAll('.slider-content-bottom li');
-    items.forEach(function(item, i) {
-        item.classList.remove('active'); 
-        if (i === index) {
-            item.classList.add('active'); 
-        }
-    });
-}
-
-</script>
+        
 </html>
 <?php
 include "../views/client/layout/footer.php";

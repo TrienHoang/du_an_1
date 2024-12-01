@@ -268,16 +268,17 @@ class Product extends connect
 
         return $groupedProducts;
     }
-    
-    
-    public function getProductsByCategoryId($categoryId) {
+
+
+    public function getProductsByCategoryId($categoryId)
+    {
         try {
             $sql = "SELECT p.*, c.name as category_name 
                     FROM products p 
                     LEFT JOIN categories c ON p.category_id = c.category_id 
                     WHERE p.category_id = :category_id";
             $stmt = $this->connect()->prepare($sql);
-    
+
             $stmt->bindParam(':category_id', $categoryId);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -288,7 +289,8 @@ class Product extends connect
     }
 
 
-    public function searchProducts($keyword) {
+    public function searchProducts($keyword)
+    {
         try {
             $sql = "SELECT p.*, c.name as category_name
                     FROM products p
@@ -304,26 +306,23 @@ class Product extends connect
         }
     }
 
-       public function get4product($category_id)
+    public function allProduct()
+    {
+        $sql = "SELECT p.*, c.name AS category_name
+                FROM products p
+                LEFT JOIN categories c ON p.category_id = c.category_id";
+
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    public function get4product($category_id)
     {
         $sql = 'SELECT * from products where category_id = ? Limit 4';
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute([$category_id]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
- 
-    
-    
 }
-    
-    
-    
-
-    
-    
-
-
-    
-
-
-

@@ -133,6 +133,9 @@ switch ($action) {
     case 'product-category':
         $home->productCategory();
         break;
+    case 'all-products':
+        $home->allProducts();
+        break;
     case 'searchresult':
         $home->searchresult();  
         break;
