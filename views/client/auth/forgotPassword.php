@@ -66,47 +66,27 @@ include "../views/client/layout/header.php";
     </style>
 </head>
 <body>
-    <div id="wrapper">
-      <form id="form-forgotPassword" action="index.php?act=forgotPassword" method="post">
-          <h1 class="form-heading">Quên mật khẩu</h1>
+<div id="wrapper">
+  <form id="form-forgotPassword" action="index.php?act=forgotPassword" method="post">
+      <h1 class="form-heading">Quên mật khẩu</h1>
 
-          <div class="form-group">
-            <i class="fa-solid fa-envelope"></i>
-            <input type="email" class="form-input" placeholder="Nhập email" required name="email">
-          </div>
+      <div class="form-group">
+        <i class="fa-solid fa-envelope"></i>
+        <input type="email" class="form-input" placeholder="Nhập email" required name="email">
+      </div>
 
-          <input type="submit" value="Gửi" class="form-submit" name="gui">
-      </form>
-      <?php
-        if(isset($thongbao)&&($thongbao!="")){
-            echo $thongbao;
-        }
-      ?>
-    </div>
+      <input type="submit" value="Gửi" class="form-submit" name="gui">
+  </form>
+
+  <?php
+    if (isset($thongbao) && $thongbao != "") {
+        echo "<p>" . $thongbao . "</p>";
+    }
+  ?>
+</div>
+
 </body>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const togglePasswordVisibility = (eyeId, passwordId) => {
-            const eyeIcon = document.getElementById(eyeId);
-            const passwordField = document.getElementById(passwordId);
 
-            if (eyeIcon && passwordField) {
-                eyeIcon.addEventListener("click", function() {
-                    const icon = eyeIcon.querySelector("i");
-                    icon.classList.toggle("fa-eye");
-                    icon.classList.toggle("fa-eye-slash");
-
-                    passwordField.type = passwordField.type === "password" ? "text" : "password";
-                });
-            } else {
-                console.error(`Phần tử '#${eyeId}' hoặc '#${passwordId}' không tồn tại trong DOM.`);
-            }
-        };
-
-        togglePasswordVisibility("eye1", "password1");
-        togglePasswordVisibility("eye2", "password2");
-    });
-</script>
 </html>
 
 
