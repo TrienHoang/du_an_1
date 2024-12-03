@@ -72,14 +72,6 @@ class UserAdminController extends User
                 if (move_uploaded_file($file['tmp_name'], './images/user/' . $images)) {
                     $createUser = $this->create(trim($_POST["name"]), trim($images), trim($_POST["address"]), trim($_POST["email"]), trim($_POST["phone"]), trim($_POST["password"]), trim($_POST["role"]), trim($_POST["active"]));
                     if ($createUser) {
-                        // echo '<div class="alert alert-success">Đăng ký thành công!</div>';
-                        // // Chuyển hướng sau 3 giây 
-                        // echo '<script>
-                        //     setTimeout(function() {
-                        //         window.location.href = "index.php?act=user";
-                        //     }, 3000);
-                        // </script>';
-                        // exit();
                         $_SESSION["success"] = "Thêm người dùng thành công";
                         header('Location:?act=user');
                         exit();

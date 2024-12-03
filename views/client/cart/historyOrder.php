@@ -12,10 +12,10 @@ include "../views/client/layout/header.php";
                     <th scope="col">Tên sản phẩm</th>
                     <th scope="col">Loại sản phẩm</th>
                     <th scope="col">Số lượng</th>
-                    <th scope="col">Trạng thái</th>
+                    <!-- <th scope="col">Trạng thái</th> -->
                     <th scope="col">Thành tiền</th>
                     <th scope="col">Ngày đặt</th>
-                    <th scope="col">Hành động</th>
+                    <!-- <th scope="col">Hành động</th> -->
                 </tr>
             </thead>
             <tbody>
@@ -29,7 +29,7 @@ include "../views/client/layout/header.php";
                     <?= $order['order_product_color'] ?> / <?= $order['order_product_size'] ?>
                     </td>
                     <td><?= $order['order_product_quantity'] ?></td>
-                    <td>
+                    <!-- <td>
                         <?php if($order['order_status'] == 'pending') :?>
                             <span class="text-primary">Chờ xử lý</span>
                         <?php elseif($order['order_status'] == 'confirmed'): ?>
@@ -39,12 +39,12 @@ include "../views/client/layout/header.php";
                         <?php else: ?>
                             <span class="text-primary">Giao hành thành công</span>
                         <?php endif ?>
-                    </td>
-                    <td><?= number_format($order['order_total'] * 1000, 0, '.', '.') ?>đ</td>
+                    </td> -->
+                    <td><?= number_format(($order['product_sale_price'] *$order['order_product_quantity']  ) * 1000, 0, '.', '.') ?>đ</td>
                     <td><?= $order['order_create_at'] ?></td>
-                    <td>
+                    <!-- <td>
                          <button class="btn btn-danger" <?=($order['order_status'] == 'confirmed' ||$order['order_status'] == 'shiping' || $order['order_status'] == 'delivered' ) ? 'disabled': "" ?>>Hủy hơn hàng</button>
-                    </td>
+                    </td> -->
                 </tr>
                 <?php endforeach; ?>
             </tbody>

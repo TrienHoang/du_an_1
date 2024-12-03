@@ -75,6 +75,7 @@ class cart extends connect{
         orders.order_id as order_id,
         products.image as order_product_image,
         products.name as order_product_name,
+        products.sale_price as product_sale_price,
         variant_colors.color_name AS order_product_color,
         variant_size.size_name AS order_product_size,
         orders.quantity as order_product_quantity,
