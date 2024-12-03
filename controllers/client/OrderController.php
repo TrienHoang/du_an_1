@@ -102,4 +102,54 @@ class OrderController
             }
         }
     }
+
+    public function listOrderUser(){
+        $listOrder = $this->order->getOrderDetailByIdUser();
+        // echo '<pre>';
+        // var_dump($listOrder);
+        // echo '</pre>';
+
+        include "../views/client/profile/listOrderUser.php";
+
+    }
+
+    public function trackOrder(){
+        $getOrderDetail = $this->order->getOrderDetailById();
+        $getOrder = $this->order->getOrderById();
+        $getCoupon = $this->order->getCouponById();
+        $getShip = $this->order->getShipById();
+        $handleCoupon = $this->handleCoupon($getCoupon, $getOrderDetail['amount']);
+
+        // echo '<pre>';
+        // var_dump($getOrderDetail);
+        // echo '</pre>';
+        include "../views/client/trackOrder/trackOrder.php";
+
+
+    }
+
+    public function handleCoupon($coupon, $total)
+    {
+        if ($coupon['coupon_type'] == 'percentage') {
+            $totalCoupon = ($total * ($coupon['coupon_value'] / 100));
+        } elseif ($coupon['coupon_type'] == 'fixed amount') {
+            $totalCoupon = $coupon['coupon_value'];
+        }
+
+        return $totalCoupon ?? 0;
+    }
+
+    public function cancleOrder()
+    {
+        try {
+            $this->order->cancle();
+            $_SESSION['success'] = 'Hủy đơn hàng thành công';
+            header('Location:' . $_SERVER['HTTP_REFERER']);
+            exit();
+        } catch (\Throwable $th) {
+            $_SESSION['error'] = 'Hủy đơn hàng thất bại';
+            header('Location:' . $_SERVER['HTTP_REFERER']);
+            exit();
+        }
+    }
 }

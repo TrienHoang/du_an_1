@@ -5,6 +5,7 @@ require_once '../controllers/admin/CategoryAdminController.php';
 require_once '../controllers/admin/UserAdminController.php';
 require_once '../controllers/admin/CouponController.php';
 require_once '../controllers/admin/ProductAdminController.php';
+require_once '../controllers/admin/OrderAdminController.php';
 
 // Client
 require_once '../controllers/client/AuthController.php';
@@ -17,13 +18,14 @@ require_once '../controllers/client/OrderController.php';
 
 
 $action = isset($_GET['act']) ? $_GET['act'] : 'index';
-$act = isset($_GET['act']) ? $_GET['act'] : 'home'; 
+$act = isset($_GET['act']) ? $_GET['act'] : 'home';
+//========================================
 $categoryAdmin = new CategoryAdminController();
 $userAdmin = new UserAdminController();
 $productAdmin = new ProductAdminController();
 $couponAdmin = new CouponController();
-
-
+$orderAdmin = new OrderAdminController();
+//=============================================
 $auth = new AuthController();
 $home = new HomeController();
 $profile = new ProfileController();
@@ -68,6 +70,18 @@ switch ($action) {
     case 'coupon-delete':
         $couponAdmin->delete();
         break;
+    case 'order-list':
+        $orderAdmin->list();
+        break;
+    case 'order-edit':
+        $orderAdmin->edit();
+        break;
+    case 'order-update':
+        $orderAdmin->update();
+        break;
+    case 'order-delete':
+        $orderAdmin->delete();
+        break;
     case 'category': // CRUD danh mục sản phẩm
         $categoryAdmin->index();
         break;
@@ -100,7 +114,7 @@ switch ($action) {
         $id = $_GET['id'];
         $userAdmin->detailUser($id);
         break;
-//=============================================
+        //=============================================
     case 'login':
         $auth->handleLogin();
         break;
@@ -137,7 +151,7 @@ switch ($action) {
         $home->allProducts();
         break;
     case 'searchresult':
-        $home->searchresult();  
+        $home->searchresult();
         break;
     case 'cart':
         $cart->index();
@@ -156,6 +170,15 @@ switch ($action) {
         break;
     case 'order':
         $order->checkout();
+        break;
+    case 'list-user-order':
+        $order->listOrderUser();
+        break;
+    case 'track-order':
+        $order->trackOrder();
+        break;
+    case 'cancel-order':
+        $order->cancleOrder();
         break;
     case 'history-order':
         $cart->getHistoryOder();

@@ -88,9 +88,11 @@ class CartController extends Cart
                 header('Location: ' . $_SERVER['HTTP_REFERER']);
                 exit();
             }
-            // echo "<pre>";
-            // var_dump($_POST);
-            // echo "</pre>";
+            if (!isset( $_SESSION['user']['user_id'])) {
+                $_SESSION['error'] = 'Vui lòng đăng nhập!';
+                header('Location: ' . $_SERVER['HTTP_REFERER']);
+                exit();
+            }
             $productId = $_POST['product_id'];
             $variantId = $_POST['variant_id'];
             $quantity = $_POST['quantity'];
@@ -116,7 +118,11 @@ class CartController extends Cart
                 header('Location: ' . $_SERVER['HTTP_REFERER']);
                 exit();
             }
-
+            if (!isset( $_SESSION['user']['user_id'])) {
+                $_SESSION['error'] = 'Vui lòng đăng nhập!';
+                header('Location: ' . $_SERVER['HTTP_REFERER']);
+                exit();
+            }
             $productId = $_POST['product_id'];
             $variantId = $_POST['variant_id'];
             $quantity = $_POST['quantity'];
@@ -141,8 +147,6 @@ class CartController extends Cart
 
     public function getHistoryOder(){
         $historyOrder = $this->getHistoryOrder();
-
-
         include "../views/client/cart/historyOrder.php";
     }
 }

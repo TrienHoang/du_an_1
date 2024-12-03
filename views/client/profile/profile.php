@@ -19,6 +19,12 @@ include "../views/client/layout/header.php";
                             </li>
                         <?php endif; ?>
                         <li>
+                            <a href="index.php?act=list-user-order">
+                                <img style="width: 55px; margin-right: 20px;" alt="">
+                                Đơn hàng của tôi
+                            </a>
+                        </li>
+                        <li>
                             <a href="index.php?act=logout">
                                 <img style="width: 55px; margin-right: 20px;" alt="">
                                 Logout
@@ -30,7 +36,7 @@ include "../views/client/layout/header.php";
 
             <div class="col-12 col-xl-9 col-xxl-9" style="padding-left: 80px;">
                 <form class="row g-3" action="?act=update-profile" method="post" style="padding-left:140px; margin-top: 20px;">
-                    <h3>Your Information</h3>
+                    <h3>Thông tin của bạn</h3>
 
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Name</label>
@@ -48,7 +54,7 @@ include "../views/client/layout/header.php";
                         <?php endif; ?>
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-12">
                         <label for="inputAddress" class="form-label">Phone</label>
                         <input type="text" class="form-control" id="inputAddress" name="phone" value="<?=$_SESSION['user']['phone']?>">
                         <?php if (isset($_SESSION['errors']['phone'])) : ?>
@@ -56,16 +62,16 @@ include "../views/client/layout/header.php";
                         <?php endif; ?>
                     </div>
 
-                    <div class="col-md-6">
+                    <!-- <div class="col-md-6">
                         <label for="inputCity" class="form-label">Password</label>
                         <input type="text" class="form-control" id="inputCity" name="password" value="<?=$_SESSION['user']['password']?>">
                         <?php if (isset($_SESSION['errors']['password'])) : ?>
                             <p class="text-danger"><?= $_SESSION['errors']['password'] ?></p>
                         <?php endif; ?>
-                    </div>
+                    </div> -->
 
                     <div class="col-12">
-                        <label for="inputAddress2" class="form-label">Address </label>
+                        <label for="inputAddress2" class="form-label">Address</label>
                         <input type="text" class="form-control" id="inputAddress2" name="address" value="<?=$_SESSION['user']['address']?>">
                         <?php if (isset($_SESSION['errors']['address'])) : ?>
                             <p class="text-danger"><?= $_SESSION['errors']['address'] ?></p>
@@ -82,10 +88,10 @@ include "../views/client/layout/header.php";
                         <?php endif; ?>
                     </div>
 
-                    <div class="form-floating">
+                    <!-- <div class="form-floating">
                         <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
                         <label for="floatingTextarea2"></label>
-                    </div>
+                    </div> -->
 
                     <div class="col-10">
                         <button type="submit" name="update-profile" class="btn btn-primary">Update Profile</button>

@@ -32,10 +32,10 @@ class UserClient extends connect
         $stmt->execute([$email]);
         $user = $stmt->fetch();
 
-        // if ($user && password_verify($password, $user['password'])) {
+        if ($user && password_verify($password, $user['password'])) {
             return $user;
-        // }
-        // return false;
+        }
+        return false;
     }
 
     private $db;
