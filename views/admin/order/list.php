@@ -56,7 +56,7 @@ include "../views/admin/layout/header.php";
                                                                 <i class="ri-pencil-line"></i>
                                                             </a>
                                                         </li>
-                                                        <li>
+                                                        <!-- <li>
                                                             <?php if ($order['status'] == 'delivered' || $order['status'] == 'shiping'): ?>
                                                                 <a onclick="return confirm('Không thể xóa khi đã giao hàng')" data-bs-toggle="modal"
                                                                     data-bs-target="#exampleModalToggle">
@@ -67,7 +67,7 @@ include "../views/admin/layout/header.php";
                                                                     <i class="ri-delete-bin-line"></i>
                                                                 </a>
                                                             <?php endif ?>
-                                                        </li>
+                                                        </li> -->
                                                         <!-- <li>
                                                             <a class="btn btn-sm btn-solid text-white"
                                                                 href="order-tracking.html">

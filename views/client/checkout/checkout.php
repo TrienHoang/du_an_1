@@ -11,7 +11,7 @@ include "../views/client/layout/header.php";
                     <div class="xc-breadcrumb__list">
                         <span><a href="#">Home</a></span>
                         <span class="dvdr"><i class="icon-arrow-right"></i></span>
-                        <span>Shopping Cart</span>
+                        <span>Đơn hàng</span>
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@ include "../views/client/layout/header.php";
                         <div class="accordion" id="shop_size">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="size__widget">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#size_widget_collapse" aria-expanded="true" aria-controls="size_widget_collapse">Shopping Cart
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#size_widget_collapse" aria-expanded="true" aria-controls="size_widget_collapse">Đơn hàng
                                     </button>
                                 </h2>
                                 <div id="size_widget_collapse" class="accordion-collapse collapse show" aria-labelledby="size__widget" data-bs-parent="#shop_size">
@@ -156,7 +156,7 @@ include "../views/client/layout/header.php";
                                         <!-- <p>Wetters, as opposed to using Content here, content here, making it look like
                                                     readable English. Many desktop </p> -->
                                         <!-- <a class="cart-checkout-btn" href="#">Place Order</a> -->
-                                        <button type="submit" name="submitCheckout" class="cart-checkout-btn">Check Out</button>
+                                        <button type="submit" name="submitCheckout" class="cart-checkout-btn">Đặt hàng</button>
                                     </div>
                                 </div>
                             </div>

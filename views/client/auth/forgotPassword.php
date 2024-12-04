@@ -1,95 +1,77 @@
 <?php
 include "../views/client/layout/header.php";
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <title>Register</title>
-    <style>
-      body {
-          font-size: 17px;
-          background-color: #f8f9fa;
-      }
-      #wrapper {
-          min-height: 80vh;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-      }
-  
-      .form-heading {
-          font-size: 30px;
-          color: black;
-          font-weight: bold;
-          text-align: center;
-          margin-bottom: 70px;
-      }
-      .form-group {
-          border-bottom: 1px solid black;
-          display: flex;
-          align-items: center;
-          width: 600px;
-      }
-      .form-input {
-          background: transparent;
-          border: 0;
-          outline: 0;
-          flex-grow: 1;
-          
-      }
-      .form-input::placeholder {
-          color: gray; 
-      }
-      .form-submit {
-          background: transparent;
-          border: 1px solid #f5f5f5;
-          color: white;
-          width: 100%;
-          background-color: rgb(201, 13, 13);
-          border-radius: 6px;
-          text-transform: uppercase;
-          padding: 10px 10px;
-          transition: 0.25s ease-in-out;
-          margin-top: 30px;
-      }
-      .form-submit:hover {
-          background-color: rgb(20, 99, 62);
-      }
-      .eye {
-          cursor: pointer;
-      }
-    </style>
-</head>
-<body>
-<div id="wrapper">
-  <form id="form-forgotPassword" action="index.php?act=forgotPassword" method="post">
-      <h1 class="form-heading">Quên mật khẩu</h1>
+<div class="xc-banner-one pt-20 pb-40">
+    <div class="container">
+        <div class="row">
 
-      <div class="form-group">
-        <i class="fa-solid fa-envelope"></i>
-        <input type="email" class="form-input" placeholder="Nhập email" required name="email">
-      </div>
+            <div class="col-xl-3 col-xxl-2 d-none d-xl-block">
+                <div class="xc-banner-one__cat" style="width: 350px; margin-top: 25px;">
+                    <ul style="padding: 5px 0px;">
+                        <?php if ($_SESSION['user']['role_id'] == 1) : ?>
+                            <li>
+                                <a href="index.php?act=admin">
+                                    <img style="width: 55px; margin-right: 20px;" alt="">
+                                    Vào quản trị
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                        <li>
+                            <a href="index.php?act=list-user-order">
+                                <img style="width: 55px; margin-right: 20px;" alt="">
+                                Đơn hàng của tôi
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.php?act=logout">
+                                <img style="width: 55px; margin-right: 20px;" alt="">
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
-      <input type="submit" value="Gửi" class="form-submit" name="gui">
-  </form>
+            <div class="col-12 col-xl-9 col-xxl-9" style="padding-left: 80px;">
+                <form class="row g-3" action="?act=chage-password" method="post" style="padding-left:140px; margin-top: 20px;">
+                    <h3>Đổi mật khẩu</h3>
 
-  <?php
-    if (isset($thongbao) && $thongbao != "") {
-        echo "<p>" . $thongbao . "</p>";
-    }
-  ?>
+                    <div class="col-md-12">
+                        <label for="inputEmail4" class="form-label">Mật khẩu cũ</label>
+                        <input type="text" class="form-control" id="inputEmail4" name="old_password" >
+                        <?php if (isset($_SESSION['errors']['old_password'])) : ?>
+                            <p class="text-danger"><?= $_SESSION['errors']['old_password'] ?></p>
+                        <?php endif; ?>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="inputPassword4" class="form-label">Nhập lại mới</label>
+                        <input type="text" class="form-control" id="inputPassword4" name="new_password" >
+                        <?php if (isset($_SESSION['errors']['new_password'])) : ?>
+                            <p class="text-danger"><?= $_SESSION['errors']['new_password'] ?></p>
+                        <?php endif; ?>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="inputAddress" class="form-label">Nhập lại mật khẩu</label>
+                        <input type="text" class="form-control" id="inputAddress" name="confirm_password" >
+                        <?php if (isset($_SESSION['errors']['confirm_password'])) : ?>
+                            <p class="text-danger"><?= $_SESSION['errors']['confirm_password'] ?></p>
+                        <?php endif; ?>
+                    </div>
+
+                    <div class="col-10">
+                        <button  name="changePassword" class="btn btn-primary">Đổi mật khẩu</button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
 </div>
 
-</body>
-
-</html>
-
-
 <?php
+unset($_SESSION['errors']);
 include "../views/client/layout/footer.php";
 ?>

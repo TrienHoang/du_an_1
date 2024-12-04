@@ -99,9 +99,9 @@
                     <ul class="nav-menus">
                         <li class="profile-nav onhover-dropdown pe-0 me-0">
                             <div class="media profile-media">
-                                <img class="user-profile rounded-circle" src="../public/admin/assets//images/users/4.jpg" alt="">
+                                <img class="user-profile rounded-circle" src="./images/user/<?=($_SESSION['user']['avatar']) ?>" alt="">
                                 <div class="user-name-hide media-body">
-                                    <span>Hoàng Tiến Triển</span>
+                                    <span><?=$_SESSION['user']['name'] ?></span>
                                     <p class="mb-0 font-roboto">Admin<i class="middle ri-arrow-down-s-line"></i></p>
                                 </div>
                             </div>
@@ -110,7 +110,7 @@
                                     <a data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                                         href="javascript:void(0)">
                                         <i data-feather="log-out"></i>
-                                        <span>Log out</span>
+                                        <span>Đăng xuất</span>
                                     </a>
                                 </li>
                             </ul>
@@ -157,18 +157,18 @@
                                 <li class="sidebar-list">
                                     <a class="sidebar-link sidebar-title link-nav" href="index.php?act=admin">
                                         <i class="ri-home-line"></i>
-                                        <span>Dashboard</span>
+                                        <span>Thống kê</span>
                                     </a>
                                 </li>
 
                                 <li class="sidebar-list">
                                     <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
                                         <i class="ri-store-3-line"></i>
-                                        <span>Product</span>
+                                        <span>Sản phẩm</span>
                                     </a>
                                     <ul class="sidebar-submenu">
                                         <li>
-                                            <a href="index.php?act=product">List Products</a>
+                                            <a href="index.php?act=product">Danh sách sản phẩm</a>
                                         </li>
 
                                     </ul>
@@ -177,11 +177,11 @@
                                 <li class="sidebar-list">
                                     <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
                                         <i class="ri-list-check-2"></i>
-                                        <span>Category</span>
+                                        <span>Danh mục</span>
                                     </a>
                                     <ul class="sidebar-submenu">
                                         <li>
-                                            <a href="index.php?act=category">Category List</a>
+                                            <a href="index.php?act=category">Danh sách danh mục</a>
                                         </li>
 
                                         <li>
@@ -197,11 +197,11 @@
                                 <li class="sidebar-list">
                                     <a class="sidebar-link sidebar-title" href="javascript:void(0)">
                                         <i class="ri-user-3-line"></i>
-                                        <span>Users</span>
+                                        <span>Người dùng</span>
                                     </a>
                                     <ul class="sidebar-submenu">
                                         <li>
-                                            <a href="index.php?act=user">All users</a>
+                                            <a href="index.php?act=user">Danh sách người dùng</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -209,15 +209,15 @@
                                 <li class="sidebar-list">
                                     <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
                                         <i class="ri-price-tag-3-line"></i>
-                                        <span>Coupons</span>
+                                        <span>Giảm giá</span>
                                     </a>
                                     <ul class="sidebar-submenu">
                                         <li>
-                                            <a href="?act=coupon">Coupon List</a>
+                                            <a href="?act=coupon">danh sách giảm giá</a>
                                         </li>
 
                                         <li>
-                                            <a href="?act=coupon-create">Create Coupon</a>
+                                            <a href="?act=coupon-create">Tạo mới giảm giá</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -225,16 +225,15 @@
                                 <li class="sidebar-list">
                                     <a class="sidebar-link sidebar-title" href="javascript:void(0)">
                                         <i class="ri-archive-line"></i>
-                                        <span>Orders</span>
+                                        <span>Đơn hàng</span>
                                     </a>
                                     <ul class="sidebar-submenu">
                                         <li>
-                                            <a href="order-list.html">Order List</a>
+                                            <a href="?act=order-list">Danh sách đơn hàng</a>
                                         </li>
                                         <li>
-                                            <a href="order-detail.html">Order Detail</a>
+                                            <a href="?act=order-edit">Quản lý đơn hàng</a>
                                         </li>
-                                        
                                     </ul>
                                 </li>
                         <div class="right-arrow" id="right-arrow">
