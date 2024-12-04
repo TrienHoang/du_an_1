@@ -10,7 +10,7 @@ include "../views/client/layout/header.php";
             <div class="col-xl-3 col-xxl-2 d-none d-xl-block">
                 <div class="xc-banner-one__cat" style="width: 350px; margin-top: 25px;">
                     <ul style="padding: 5px 0px;">
-                        <?php if ($_SESSION['user']['role_id'] == 2) : ?>
+                        <?php if ($_SESSION['user']['role_id'] == 1) : ?>
                             <li>
                                 <a href="index.php?act=admin"> 
                                     <img style="width: 55px; margin-right: 20px;" alt="">
@@ -22,6 +22,12 @@ include "../views/client/layout/header.php";
                             <a href="index.php?act=list-user-order">
                                 <img style="width: 55px; margin-right: 20px;" alt="">
                                 Đơn hàng của tôi
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.php?act=chage-password">
+                                <img style="width: 55px; margin-right: 20px;" alt="">
+                                Đổi mật khẩu
                             </a>
                         </li>
                         <li>
@@ -99,6 +105,7 @@ include "../views/client/layout/header.php";
 
                 </form>
             </div>
+
         </div>
     </div>
 </div>

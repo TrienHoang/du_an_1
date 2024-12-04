@@ -119,7 +119,7 @@ include "../views/admin/layout/header.php";
                                                     <label
                                                         class="col-lg-2 col-md-3 col-form-label form-label-title">Password</label>
                                                     <div class="col-md-9 col-lg-10">
-                                                        <input class="form-control" name="password" value="<?=$infoUser["password"] ?>" type="text">
+                                                        <input class="form-control" name="password" disabled type="text">
                                                         <?php if (isset($errors['password'])) : ?>
                                                             <p class="text-danger"><?= $errors['password'] ?></p>
                                                         <?php endif; ?>
@@ -131,7 +131,7 @@ include "../views/admin/layout/header.php";
                                                         class="col-lg-2 col-md-3 col-form-label form-label-title">Confirm
                                                         Password</label>
                                                     <div class="col-md-9 col-lg-10">
-                                                        <input class="form-control" name="confirmPassword" type="password" value="<?=$infoUser["password"] ?>">
+                                                        <input class="form-control" name="confirmPassword" disabled type="password" >
                                                         <?php if (isset($errors['confirmPassword'])) : ?>
                                                             <p class="text-danger"><?= $errors['confirmPassword'] ?></p>
                                                         <?php endif; ?>

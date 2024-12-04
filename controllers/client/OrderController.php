@@ -144,7 +144,7 @@ class OrderController
         try {
             $this->order->cancle();
             $_SESSION['success'] = 'Hủy đơn hàng thành công';
-            header('Location:' . $_SERVER['HTTP_REFERER']);
+            header('Location: ?act=list-user-order' );
             exit();
         } catch (\Throwable $th) {
             $_SESSION['error'] = 'Hủy đơn hàng thất bại';

@@ -18,11 +18,11 @@ class User extends connect
         return $stmt->execute([$name, $avatar, $address, $email, $phone, $password, $role, $active]);
     }
 
-    public function edit($id, $name, $avatar, $address, $email, $phone, $password, $role, $active)
+    public function edit($id, $name, $avatar, $address, $email, $phone, $role, $active)
     {
-        $sql = 'UPDATE users SET name = ?, avatar =?, address = ?, email = ?, phone = ?, password = ?, role_id = ?, active = ? WHERE user_id=?';
+        $sql = 'UPDATE users SET name = ?, avatar =?, address = ?, email = ?, phone = ?, role_id = ?, active = ? WHERE user_id=?';
         $stmt = $this->connect()->prepare($sql);
-        return $stmt->execute([ $name, $avatar, $address, $email, $phone, $password, $role, $active ,$id]);
+        return $stmt->execute([ $name, $avatar, $address, $email, $phone, $role, $active ,$id]);
     }
 
     public function detail($id) {

@@ -123,17 +123,17 @@ class UserAdminController extends User
                 $errors["active"] = "Vui lòng chọn trạng thái";
             }
 
-            if (empty($_POST['password'])) {
-                $errors["password"] = "Vui lòng nhập mật khẩu";
-            } else if (strlen(trim($_POST['password'])) < 6) {
-                $errors["password"] = "Mật khẩu phải nhiều hơn 6 kí tự";
-            }
+            // if (empty($_POST['password'])) {
+            //     $errors["password"] = "Vui lòng nhập mật khẩu";
+            // } else if (strlen(trim($_POST['password'])) < 6) {
+            //     $errors["password"] = "Mật khẩu phải nhiều hơn 6 kí tự";
+            // }
 
-            if (empty($_POST['confirmPassword'])) {
-                $errors["confirmPassword"] = "Chưa nhập lại mật khẩu!";
-            } else if ($_POST['password'] !== $_POST['confirmPassword']) {
-                $errors["confirmPassword"] = "Nhập lại mật khẩu không khớp";
-            }
+            // if (empty($_POST['confirmPassword'])) {
+            //     $errors["confirmPassword"] = "Chưa nhập lại mật khẩu!";
+            // } else if ($_POST['password'] !== $_POST['confirmPassword']) {
+            //     $errors["confirmPassword"] = "Nhập lại mật khẩu không khớp";
+            // }
 
             $file = $_FILES['avatar'];
             $images = $file['name'];
@@ -146,7 +146,7 @@ class UserAdminController extends User
             }
 
             if (empty($errors)) {
-                $updateUser = $this->edit($id, trim($_POST["name"]), $images, trim($_POST["address"]), trim($_POST["email"]), trim($_POST["phone"]), trim($_POST["password"]), trim($_POST["role"]), trim($_POST["active"]));
+                $updateUser = $this->edit($id, trim($_POST["name"]), $images, trim($_POST["address"]), trim($_POST["email"]), trim($_POST["phone"]), trim($_POST["role"]), trim($_POST["active"]));
                 if ($updateUser) {
                     // echo '<div class="alert alert-success">Sửa thành công!</div>';
                     // echo '<script>

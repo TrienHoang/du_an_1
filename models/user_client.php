@@ -54,4 +54,18 @@ class UserClient extends connect
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function updatePass($newPassword){
+        $hash_password = password_hash($newPassword,PASSWORD_DEFAULT);
+        $sql = "UPDATE users SET password = ? where user_id = ?";
+        $stmt = $this->connect()->prepare($sql);
+        return $stmt->execute([$hash_password,$_SESSION['user']['user_id']]);
+    }
+
+    public function getPassword(){
+        $sql = "SELECT password from users where user_id = ?";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$_SESSION['user']['user_id']]);
+        return $stmt->fetchColumn();
+    }
 }
