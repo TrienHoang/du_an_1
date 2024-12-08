@@ -42,12 +42,26 @@ include "../views/client/layout/header.php";
                                 <?php foreach ($listOrder as $order): ?>
                                     <tr>
                                         <td class="product-name">#<?= $order['order_detail_id'] ?></td>
-                                        <td class="product-price"><?= $order['status'] ?></td>
+                                        <td class="product-price">
+                                            <?php if ($order['status'] == "pending"): ?>
+                                                <mark class="bg-warning text-light rounded p-1">Chưa xử lý</mark>
+                                            <?php elseif ($order['status'] == "confirmed") : ?>
+                                                <mark class="bg-primary text-light rounded p-1">Đã xác nhận</mark>
+                                            <?php elseif ($order['status'] == "shiping") : ?>
+                                                <mark class="bg-primary text-light rounded p-1">Đang giao hàng</mark>
+                                            <?php elseif ($order['status'] == "delivered") : ?>
+                                                <mark class="bg-success text-light rounded p-1">Giao hàng thành công</mark>
+                                            <?php else : ?>
+                                                <mark class="bg-danger text-light rounded p-1"> Đơn hàng bị hủy</mark>
+                                            <?php endif ?>
+
+
+                                        </td>
                                         <td>
                                             <a class="btn btn-primary" href="?act=track-order&order_detail_id=<?= $order['order_detail_id'] ?>">Xem chi tiết</a>
 
-                                            <button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn hủy đơn hàng này không?')" 
-                                            <?=($order['status'] == 'shiping' || $order['status'] == 'delivered'||$order['status'] == 'canceled' ) ? 'disabled' : "" ?>> <a href="?act=cancel-order&order_detail_id=<?= $order['order_detail_id'] ?>">Hủy hơn hàng</a></button>
+                                            <button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn hủy đơn hàng này không?')"
+                                                <?= ($order['status'] == 'shiping' || $order['status'] == 'delivered' || $order['status'] == 'canceled') ? 'disabled' : "" ?>> <a href="?act=cancel-order&order_detail_id=<?= $order['order_detail_id'] ?>">Hủy hơn hàng</a></button>
 
                                         </td>
                                     </tr>

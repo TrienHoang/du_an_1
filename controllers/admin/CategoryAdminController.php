@@ -142,6 +142,8 @@ class CategoryAdminController extends Category
     public function deleteCategory()
     {
         try {
+            
+
             $this->delete($_GET['id']);
             $_SESSION['success'] = 'Xoa danh mục thành công';
             header('Location: index.php?act=category');

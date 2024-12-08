@@ -91,16 +91,8 @@ include "../views/client/layout/header.php";
 
 <body>
 <div id="wrapper">
-    <?php
-    if (isset($_SESSION['success'])) {
-        echo '<div class="alert alert-success">' . $_SESSION['success'] . '</div>';
-        unset($_SESSION['success']);
-    }
-    if (isset($_SESSION['error'])) {
-        echo '<div class="alert alert-danger">' . $_SESSION['error'] . '</div>';
-        unset($_SESSION['error']);
-    }
-    ?>
+
+
 
     <form id="form-register" action="index.php?act=register" method="post" class="container">
         <h1 class="form-heading">Đăng ký</h1>
@@ -184,5 +176,6 @@ document.addEventListener("DOMContentLoaded", function() {
 </html>
 
 <?php
+unset($_SESSION['errors']);
 include "../views/client/layout/footer.php";
 ?>

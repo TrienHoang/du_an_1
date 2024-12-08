@@ -126,7 +126,7 @@ include "../views/client/layout/header.php";
 
         .xc-product-two__img img {
             width: 100%;
-            height: auto;
+            height: 255px;
         }
     </style>
 </head>
@@ -247,7 +247,7 @@ include "../views/client/layout/header.php";
         <div class="xc-product-two pb-80">
             <div class="container">
                 <div class="xc-sec-heading">
-                    <h3 class="xc-sec-heading__title"><span><i class="icon-power"></i></span>Sản phẩm bán chạy </h3>
+                    <h3 class="xc-sec-heading__title m-5"><span><i class="icon-power"></i></span>Sản phẩm bán chạy </h3>
                 </div>
                 <div class="row">
                     <?php foreach ($product as $pro): ?>
@@ -256,7 +256,7 @@ include "../views/client/layout/header.php";
                                 <span class="xc-product-two__deal d-none">BEST DEALS</span>
 
                                 <div class="xc-product-two__img">
-                                    <img src="./images/product/<?php echo $pro['product_image'] ?>" alt="product">
+                                    <img src="./images/product/<?php echo $pro['product_image'] ?>" width="" alt="product">
                                 </div>
 
                                 <h5 class="xc-product-two__title">

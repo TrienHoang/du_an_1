@@ -6,6 +6,7 @@ require_once '../controllers/admin/UserAdminController.php';
 require_once '../controllers/admin/CouponController.php';
 require_once '../controllers/admin/ProductAdminController.php';
 require_once '../controllers/admin/OrderAdminController.php';
+require_once '../controllers/admin/StatisticalController.php';
 
 // Client
 require_once '../controllers/client/AuthController.php';
@@ -22,6 +23,7 @@ $userAdmin = new UserAdminController();
 $productAdmin = new ProductAdminController();
 $couponAdmin = new CouponController();
 $orderAdmin = new OrderAdminController();
+$statistical = new StatisticalController();
 //=============================================
 $auth = new AuthController();
 $home = new HomeController();
@@ -34,7 +36,7 @@ $order = new OrderController();
 if (isset($_SESSION['user']) && isset($_SESSION['user']['user_id']) && isset($_SESSION['user']['role_id']) && $_SESSION['user']['role_id'] == 1) {
     switch ($action) {
         case 'admin': // Trang chủ admin
-            include "../views/admin/index.php";
+            $statistical->show();
             break;
         case 'product': // Crud Sản phẩm
             $productAdmin->index();
@@ -188,8 +190,8 @@ switch ($action) {
     case 'history-order':
         $cart->getHistoryOder();
         break;
-//     default:
-//         $_SESSION['error'] = "Bạn không có quyền truy cập trang quản trị";
-//         header('location:?act=index');
-//         break;
-}   
+        // default:
+        //     $_SESSION['error'] = "Bạn không có quyền truy cập trang quản trị";
+        //     header('location:?act=index');
+        //     break;
+}
