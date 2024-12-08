@@ -47,40 +47,40 @@ include "../views/client/layout/header.php";
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Name</label>
                         <input type="text" class="form-control" id="inputEmail4" name="name" value="<?=$_SESSION['user']['name']?>">
-                        <?php if (isset($_SESSION['errors']['name'])) : ?>
-                            <p class="text-danger"><?= $_SESSION['errors']['name'] ?></p>
+                        <?php if (isset($errors['name'])) : ?>
+                            <p class="text-danger"><?= $errors['name']?></p>
                         <?php endif; ?>
                     </div>
 
                     <div class="col-md-6">
                         <label for="inputPassword4" class="form-label">Email</label>
                         <input type="email" class="form-control" id="inputPassword4" name="email" value="<?=$_SESSION['user']['email']?>">
-                        <?php if (isset($_SESSION['errors']['email'])) : ?>
-                            <p class="text-danger"><?= $_SESSION['errors']['email'] ?></p>
+                        <?php if (isset($errors['email'])) : ?>
+                            <p class="text-danger"><?= $errors['email'] ?></p>
                         <?php endif; ?>
                     </div>
 
                     <div class="col-12">
                         <label for="inputAddress" class="form-label">Phone</label>
                         <input type="text" class="form-control" id="inputAddress" name="phone" value="<?=$_SESSION['user']['phone']?>">
-                        <?php if (isset($_SESSION['errors']['phone'])) : ?>
-                            <p class="text-danger"><?= $_SESSION['errors']['phone'] ?></p>
+                        <?php if (isset($errors['phone'])) : ?>
+                            <p class="text-danger"><?= $errors['phone'] ?></p>
                         <?php endif; ?>
                     </div>
 
                     <!-- <div class="col-md-6">
                         <label for="inputCity" class="form-label">Password</label>
                         <input type="text" class="form-control" id="inputCity" name="password" value="<?=$_SESSION['user']['password']?>">
-                        <?php if (isset($_SESSION['errors']['password'])) : ?>
-                            <p class="text-danger"><?= $_SESSION['errors']['password'] ?></p>
+                        <?php if (isset($errors['password'])) : ?>
+                            <p class="text-danger"><?= $errors['password'] ?></p>
                         <?php endif; ?>
                     </div> -->
 
                     <div class="col-12">
                         <label for="inputAddress2" class="form-label">Address</label>
                         <input type="text" class="form-control" id="inputAddress2" name="address" value="<?=$_SESSION['user']['address']?>">
-                        <?php if (isset($_SESSION['errors']['address'])) : ?>
-                            <p class="text-danger"><?= $_SESSION['errors']['address'] ?></p>
+                        <?php if (isset($errors['address'])) : ?>
+                            <p class="text-danger"><?= $errors['address'] ?></p>
                         <?php endif; ?>
                     </div>
 
@@ -89,8 +89,8 @@ include "../views/client/layout/header.php";
                             <option value="Nam" <?=$_SESSION['user']['render'] == 'Nam' ? 'selected' : '' ?>>Nam</option>
                             <option value="Nu" <?=$_SESSION['user']['render'] == 'Nu' ? 'selected' : '' ?>>Nu</option>
                         </select>
-                        <?php if (isset($_SESSION['errors']['render'])) : ?>
-                            <p class="text-danger"><?= $_SESSION['errors']['render'] ?></p>
+                        <?php if (isset($errors['render'])) : ?>
+                            <p class="text-danger"><?= $errors['render'] ?></p>
                         <?php endif; ?>
                     </div>
 
@@ -111,6 +111,6 @@ include "../views/client/layout/header.php";
 </div>
 
 <?php
-unset($_SESSION['errors']);
+// unset($_SESSION['errors']);
 include "../views/client/layout/footer.php";
 ?>

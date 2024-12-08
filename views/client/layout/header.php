@@ -149,15 +149,15 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : null; ?>
                                 <nav id="mobile-menu">
                                     <ul class="ul-0">
                                         <li class="">
-                                            <a href="?act=index">Home</a>
+                                            <a href="?act=index">Trang chủ</a>
                                         </li>
                                         <li><a href="#">About</a></li>
-                                        <li class="has-dropdown"><a href="">Shop</a>
+                                        <li class="has-dropdown"><a href="">Sản phẩm</a>
                                             <ul class="submenu">
                                                 <!-- <li><a href="shop.html">Shop</a> -->
-                                                <li><a href="index.php?act=all-products"> All Product</a></li>
-                                                <li><a href="?act=cart">Cart</a></li>
-                                                <li><a href="?act=checkout">Checkout</a></li>
+                                                <li><a href="index.php?act=all-products">Tất cả sản phẩm</a></li>
+                                                <li><a href="?act=cart">Đơn hàng</a></li>
+                                                <li><a href="?act=checkout">Đặt hàng</a></li>
                                             </ul>
                                         </li>
                                         <!-- <li class="has-dropdown">
@@ -179,7 +179,7 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : null; ?>
                                             </ul>
                                         </li> -->
                                         <li>
-                                            <a href="#">Contact</a>
+                                            <a href="#">Liên hệ</a>
                                         </li>
                                     </ul>
                                 </nav>

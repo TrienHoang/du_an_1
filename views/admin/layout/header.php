@@ -55,6 +55,8 @@
     <!-- App css -->
     <link rel="stylesheet" type="text/css" href="../public/admin/assets//css/style.css">
 
+    <!--  -->
+    <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css"> -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!-- toastr js -->
@@ -230,9 +232,6 @@
                                     <ul class="sidebar-submenu">
                                         <li>
                                             <a href="?act=order-list">Danh sách đơn hàng</a>
-                                        </li>
-                                        <li>
-                                            <a href="?act=order-edit">Quản lý đơn hàng</a>
                                         </li>
                                     </ul>
                                 </li>

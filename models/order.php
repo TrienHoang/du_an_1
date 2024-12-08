@@ -28,7 +28,7 @@ class Order extends connect
 
     public function allOrderDetail()
     {
-        $sql = "SELECT * from order_details";
+        $sql = "SELECT * from order_details ORDER BY order_detail_id DESC";
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

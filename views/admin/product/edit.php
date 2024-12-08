@@ -254,7 +254,7 @@ include "../views/admin/layout/header.php";
                                                             <h5 class="text-dark fw-medium mb-1">Dung lượng </h5>
                                                             <div class="d-flex flex-wrap gap-2" role="group" aria-label="Basic checkbox toggle button group">
                                                             <?php foreach ($list_sizes as $size): ?>
-                                                                <input type="checkbox" class="form-check-input" id="size-<?= $size["variant_size_id"] ?>-${container.children.length}  value="<?= $size["variant_size_id"] ?>" name="variant_size[]">
+                                                                <input type="checkbox" class="form-check-input" id="size-<?= $size["variant_size_id"] ?>-${container.children.length}"    value="<?= $size["variant_size_id"] ?>" name="variant_size[]">
                                                                 <label class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center" for="size-<?= $size["variant_size_id"] ?>-${container.children.length}"><?= $size["size_name"] ?></label>
                                                             <?php endforeach; ?>
                                                             </div>
@@ -263,7 +263,7 @@ include "../views/admin/layout/header.php";
                                                             <h5 class="text-dark fw-medium mb-1">Màu :</h5>
                                                             <div class="d-flex flex-wrap gap-2" role="group" aria-label="Basic checkbox toggle button group">
                                                             <?php foreach ($list_color as $color): ?>
-                                                                <input type="checkbox" class="form-check-input" id="color-<?= $color["variant_color_id"] ?>-${container.children.length}" value="<?= $color["variant_color_id"]  ?>">
+                                                                <input type="checkbox" class="form-check-input" id="color-<?= $color["variant_color_id"] ?>-${container.children.length}" name="variant_color[]"  value="<?=$color["variant_color_id"]?>" >
                                                                 <label class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center" for="color-<?= $color["variant_color_id"] ?>-${container.children.length}" ><span class="rounded-circle p-2" style="background-color: <?= $color["color_code"] ?>;"></span></label>
                                                             <?php endforeach; ?>
                                                             </div>

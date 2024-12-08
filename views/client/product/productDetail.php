@@ -1,6 +1,9 @@
 <?php
 include "../views/client/layout/header.php";
 ?>
+<!-- <pre>
+<?=var_dump($productDetail) ?>    
+</pre> -->
 
 <!-- xc-breadcrumb area start -->
 <div class="xc-breadcrumb__area base-bg">
@@ -34,7 +37,7 @@ include "../views/client/layout/header.php";
                         <div class="tab-content" id="nav-tabContent">
                             <?php foreach ($productDetail['galleries'] as $key => $gallery) : ?>
                                 <div class="tab-pane fade show <?= $key === 0 ? "active" : "" ?>" id="nav-<?= $key + 1 ?>" role="tabpanel" aria-labelledby="nav-<?= $key + 1 ?>-tab">
-                                    <img src="./images/product_gallery/<?= $gallery ?>" alt="">
+                                    <img src="./images/product_gallery/<?= $gallery ?>" height="800px" alt="">
                                 </div>
                             <?php endforeach ?>
 
@@ -46,7 +49,7 @@ include "../views/client/layout/header.php";
                             <div class="nav nav-tabs justify-content-sm-start" id="nav-tab" role="tablist">
                                 <?php foreach ($productDetail['galleries'] as $key => $gallery) : ?>
                                     <button class="nav-link <?= $key === 0 ? "active" : "" ?>" id="nav-<?= $key + 1 ?>-tab" data-bs-toggle="tab" data-bs-target="#nav-<?= $key + 1 ?>" type="button" role="tab" aria-controls="nav-<?= $key + 1 ?>" aria-selected="true">
-                                        <img src="./images/product_gallery/<?= $gallery ?>" alt="">
+                                        <img src="./images/product_gallery/<?= $gallery ?>" height="100px" alt="">
                                     </button>
                                 <?php endforeach ?>
                             </div>
@@ -91,7 +94,7 @@ include "../views/client/layout/header.php";
                             </div>
                         </div>
 
-                        <p><?= $productDetail['product_description'] ?></p>
+
 
                         <div class="product__details-price">
                             <span class="product__details-ammount old-ammount price-variants"><?= number_format($productDetail['product_price'] * 1000, 0, '.', '.') ?></span>
@@ -197,52 +200,34 @@ include "../views/client/layout/header.php";
                         <div class="tab-pane fade show active" id="nav-desc" role="tabpanel" aria-labelledby="nav-desc-tab">
                             <div class="product__details-description product__details-review-inner mt-60">
                                 <div class="product__details-description-content">
-                                    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                        fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                                        minim veniam,
-                                        Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                                        dolore eu fugiat nulla pariatur. </p>
-                                </div>
+                                <p><?= $productDetail['product_description'] ?></p>
+                                    </div>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="nav-additional" role="tabpanel" aria-labelledby="nav-additional-tab">
                             <div class="product__details-additional">
                                 <div class="product__details-additional-inner">
                                     <table>
-                                        <tbody>s
+                                        <tbody>
                                             <tr>
-                                                <th scope="row">Brand:</th>
-                                                <td>Apple</td>
+                                                <th scope="row">Hãng điện thoại:</th>
+                                                <td><?=$productDetail['category_name'] ?></td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">Style:</th>
-                                                <td>GPS</td>
+                                                <th scope="row">Dung lượng bộ nhớ</th>
+                                                <td>256Gb</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">Screen Size:</th>
-                                                <td>41 Millimeters</td>
+                                                <th scope="row">Màu:</th>
+                                                <td>Xanh lá</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">Color:</th>
-                                                <td>Green Aluminum Case with Clover Sport Band</td>
+                                                <th scope="row">Tương thích </th>
+                                                <td>Hệ điều hành Ios và Androi</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">Compatible Devices:</th>
-                                                <td>Smarxchone</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">Special Feature:</th>
-                                                <td>Activity Tracker, Heart Rate Monitor, Sleep Monitor, Blood
-                                                    Oxygen</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">Capacity:</th>
-                                                <td>32GB</td>
+                                                <th scope="row">Tính năng đặc biệt</th>
+                                                <td> Theo dõi hoạt động, Theo dõi nhịp tim, Theo dõi giấc ngủ, Oxy trong máu</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -469,7 +454,7 @@ include "../views/client/layout/header.php";
                 <div class="col-xl-3 col-md-6">
                     <div class="xc-product-eight__item">
                         <div class="xc-product-eight__img">
-                            <img src="./images/product/<?= $product['image'] ?>" style="width: 100%; height: 100%; object-fit: cover;" alt="fas">
+                            <img src="./images/product/<?= $product['image'] ?>" style="width: 100%; height: 255px; object-fit: cover;" alt="fas">
                             <span class="xc-product-eight__offer">30% off</span>
                             <div class="xc-product-eight__icons">
                                 <a href="?act=product_detail&slug=<?= $product['slug'] ?>" class="xc-product-eight__action">
@@ -526,6 +511,7 @@ include "../views/client/layout/header.php";
             });
         });
 
+
         // chọn kích thước
         sizeButtons.forEach(button => {
             button.addEventListener('click', function() {
@@ -543,7 +529,7 @@ include "../views/client/layout/header.php";
                     variant.variant_color_code === selectedColor &&
                     variant.variant_size_name === selectedSize
                 );
-                console.log(matchedVariant);
+                // console.log(matchedVariant);
                 if (matchedVariant) {
                     document.querySelector('.price-variants').textContent = numberWithCommas(matchedVariant.product_variant_price);
                     document.querySelector('.sale-price-variants').textContent = numberWithCommas(matchedVariant.product_variant_sale_price);

@@ -45,11 +45,11 @@ include "../views/admin/layout/header.php";
 
                                                 <td>
                                                     <ul>
-                                                        <li>
+                                                        <!-- <li>
                                                             <a href="#">
                                                                 <i class="ri-eye-line"></i>
                                                             </a>
-                                                        </li>
+                                                        </li> -->
 
                                                         <li>
                                                             <a href="?act=order-edit&order_detail_id=<?= $order['order_detail_id'] ?>">

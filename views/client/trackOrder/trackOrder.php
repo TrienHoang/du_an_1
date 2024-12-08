@@ -116,8 +116,24 @@ include "../views/client/layout/header.php";
                         <div class=" row p-3 rounded">
                             <h5>Thông tin đơn hàng </h5>
                             <ul>
-                                <li class="list-group-item"><span class="p-2 bg-light fs-5 m-3" style=" color: #42ba96">Đang xử lý</span></li>
-                                <li class="list-group-item">Ngày đặt: <?= date('F d, Y \a\t g:i a', strtotime($order['created_at'])) ?></li>
+                                <li class="list-group-item">
+                                    <?php if ($getOrderDetail['status'] == "pending"): ?>
+                                        <span class="p-2 bg-warning fs-5 m-3 rounded text-light" >Chưa xử lý</span>
+                                    <?php elseif ($getOrderDetail['status'] == "confirmed") : ?>
+                                        <span class="p-2 bg-primary fs-5 m-3 rounded text-light" >Đã xác nhận</span>
+                                        
+                                    <?php elseif ($getOrderDetail['status'] == "shiping") : ?>
+                                        <span class="p-2 bg-primary fs-5 m-3 rounded text-light" >Đang giao hàng</span>
+                                        
+                                    <?php elseif ($getOrderDetail['status'] == "delivered") : ?>
+                                        <span class="p-2 bg-success fs-5 m-3 rounded text-light" >Giao hàng thành công</span>
+                                        
+                                    <?php else : ?>
+                                        <span class="p-2 bg-danger fs-5 mb-3  rounded text-light" >Đơn hàng bị hủy</span>
+                                        
+                                    <?php endif ?>
+                                </li>
+                                <li class="list-group-item mt-5">Ngày đặt: <?= date('F d, Y \a\t g:i a', strtotime($order['created_at'])) ?></li>
                             </ul>
 
                             <h5>Địa chỉ giao hàng</h5>

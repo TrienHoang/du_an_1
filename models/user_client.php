@@ -6,7 +6,7 @@ class UserClient extends connect
 
     public function register($name, $email, $password) {
         try {
-            $sql = 'INSERT INTO users(name, email, password, role_id) VALUES(?, ?, ?, 1)';
+            $sql = 'INSERT INTO users(name, email, password, role_id, created_at) VALUES(?, ?, ?, 2, now())';
             $stmt = $this->connect()->prepare($sql);
             return $stmt->execute([$name, $email, $password]);
         } catch (PDOException $e) {
